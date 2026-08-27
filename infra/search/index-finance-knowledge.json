@@ -143,9 +143,5 @@
         }
       }
     ]
-  },
-  "corsOptions": {
-    "allowedOrigins": ["*"],
-    "maxAgeInSeconds": 300
   }
 }

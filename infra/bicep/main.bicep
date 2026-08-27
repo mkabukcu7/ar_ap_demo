@@ -144,6 +144,7 @@ module roleAssignments 'modules/roleassignments.bicep' = {
 output projectEndpoint           string = foundry.outputs.projectEndpoint
 output searchEndpoint            string = search.outputs.searchEndpoint
 output storageAccountName        string = storage.outputs.storageAccountName
+@secure()
 output appInsightsConnectionString string = logAnalytics.outputs.appInsightsConnectionString
 output backendUrl                string = containerApps.outputs.backendUrl
 output frontendUrl               string = containerApps.outputs.frontendUrl

@@ -59,7 +59,7 @@ curl -X PUT "${SEARCH_ENDPOINT}/indexes/finance-knowledge?api-version=2024-05-01
 ```bash
 curl -X PUT "${SEARCH_ENDPOINT}/datasources/finance-knowledge-datasource?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/datasource-finance-knowledge.json
 ```
 
@@ -68,7 +68,7 @@ curl -X PUT "${SEARCH_ENDPOINT}/datasources/finance-knowledge-datasource?api-ver
 ```bash
 curl -X PUT "${SEARCH_ENDPOINT}/skillsets/finance-knowledge-skillset?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/skillset-finance-knowledge.json
 ```
 
@@ -77,7 +77,7 @@ curl -X PUT "${SEARCH_ENDPOINT}/skillsets/finance-knowledge-skillset?api-version
 ```bash
 curl -X PUT "${SEARCH_ENDPOINT}/indexers/finance-knowledge-indexer?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/indexer-finance-knowledge.json
 ```
 
@@ -85,14 +85,14 @@ curl -X PUT "${SEARCH_ENDPOINT}/indexers/finance-knowledge-indexer?api-version=2
 
 ```bash
 curl -X POST "${SEARCH_ENDPOINT}/indexers/finance-knowledge-indexer/run?api-version=2024-05-01-preview" \
-  -H "Authorization: ******"
+  -H "Authorization: Bearer ${TOKEN}"
 ```
 
 ## Step 8 — Check Indexer Status
 
 ```bash
 curl "${SEARCH_ENDPOINT}/indexers/finance-knowledge-indexer/status?api-version=2024-05-01-preview" \
-  -H "Authorization: ******" | python3 -m json.tool
+  -H "Authorization: Bearer ${TOKEN}" | python3 -m json.tool
 ```
 
 ## Alternative: Azure CLI (az rest)

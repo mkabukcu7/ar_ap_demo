@@ -13,7 +13,13 @@ import type {
   ChatResponse,
 } from './types';
 
-const BASE = import.meta.env.VITE_API_BASE_URL ?? '';
+declare global {
+  interface Window {
+    __RUNTIME_CONFIG__?: { API_BASE_URL?: string };
+  }
+}
+
+const BASE = window.__RUNTIME_CONFIG__?.API_BASE_URL ?? import.meta.env.VITE_API_BASE_URL ?? '';
 
 async function fetchJSON<T>(url: string, init?: RequestInit): Promise<T> {
   const res = await fetch(`${BASE}${url}`, {

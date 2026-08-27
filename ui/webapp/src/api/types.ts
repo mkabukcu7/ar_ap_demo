@@ -144,6 +144,7 @@ export interface AgentActivityResponse {
 export interface ApproveResponse {
   invoice_id: string;
   status: string;
+  approved: boolean;
   message: string;
 }
 

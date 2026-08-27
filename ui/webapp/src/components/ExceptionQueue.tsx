@@ -69,7 +69,9 @@ export function ExceptionQueue() {
       columnId: 'amount',
       renderHeaderCell: () => 'Amount',
       renderCell: (ex) =>
-        ex.amount ? `$${ex.amount.toLocaleString()}` : '—',
+        ex.amount != null
+          ? `$${ex.amount.toLocaleString(undefined, { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`
+          : '—',
     }),
   ];
 

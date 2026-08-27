@@ -38,8 +38,9 @@ resource appInsights 'Microsoft.Insights/components@2020-02-02' = {
 
 output workspaceId               string = workspace.id
 output workspaceName             string = workspace.name
+@secure()
 output workspaceKey              string = workspace.listKeys().primarySharedKey
 output appInsightsId             string = appInsights.id
 output appInsightsName           string = appInsights.name
-output appInsightsInstrumentationKey string = appInsights.properties.InstrumentationKey
+@secure()
 output appInsightsConnectionString   string = appInsights.properties.ConnectionString

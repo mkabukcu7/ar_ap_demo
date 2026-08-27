@@ -9,6 +9,7 @@ param frontendAppName  string
 param location         string
 param tags             object
 param logAnalyticsWorkspaceId string
+@secure()
 param logAnalyticsKey         string
 param backendImage            string
 param frontendImage           string
@@ -16,6 +17,7 @@ param aiProjectEndpoint       string
 param searchEndpoint          string
 param searchIndex             string
 param storageAccountName      string
+@secure()
 param appInsightsConnectionString string
 
 // --------------- Container Apps Environment ---------------
@@ -70,6 +72,7 @@ resource backendApp 'Microsoft.App/containerApps@2024-03-01' = {
             { name: 'AZURE_STORAGE_ACCOUNT',              value: storageAccountName }
             { name: 'APPLICATIONINSIGHTS_CONNECTION_STRING', value: appInsightsConnectionString }
             { name: 'FINANCE_AGENT_MODE',                 value: 'foundry' }
+            { name: 'FINANCE_CORS_ORIGINS',               value: 'https://${frontendAppName}.${caEnv.properties.defaultDomain}' }
           ]
         }
       ]
@@ -119,7 +122,7 @@ resource frontendApp 'Microsoft.App/containerApps@2024-03-01' = {
             memory: '0.5Gi'
           }
           env: [
-            { name: 'VITE_API_BASE_URL', value: 'https://${backendApp.properties.configuration.ingress.fqdn}' }
+            { name: 'API_BASE_URL', value: 'https://${backendApp.properties.configuration.ingress.fqdn}' }
           ]
         }
       ]

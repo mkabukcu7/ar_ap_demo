@@ -155,30 +155,30 @@ TOKEN=$(az account get-access-token \
 # Create index
 curl -s -X PUT "${SEARCH_ENDPOINT}/indexes/finance-knowledge?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/index-finance-knowledge.json | python3 -m json.tool
 
 # Create data source
 curl -s -X PUT "${SEARCH_ENDPOINT}/datasources/finance-knowledge-datasource?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/datasource-finance-knowledge.json | python3 -m json.tool
 
 # Create skillset
 curl -s -X PUT "${SEARCH_ENDPOINT}/skillsets/finance-knowledge-skillset?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/skillset-finance-knowledge.json | python3 -m json.tool
 
 # Create indexer
 curl -s -X PUT "${SEARCH_ENDPOINT}/indexers/finance-knowledge-indexer?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/indexer-finance-knowledge.json | python3 -m json.tool
 
 # Run indexer immediately
 curl -s -X POST "${SEARCH_ENDPOINT}/indexers/finance-knowledge-indexer/run?api-version=2024-05-01-preview" \
-  -H "Authorization: ******"
+  -H "Authorization: Bearer ${TOKEN}"
 ```
 
 ---
@@ -331,7 +331,7 @@ curl https://<backend-url>/api/health
 ```bash
 TOKEN=$(az account get-access-token --resource "https://search.azure.com" --query accessToken -o tsv)
 curl "${SEARCH_ENDPOINT}/indexes/finance-knowledge/docs/\$count?api-version=2024-05-01-preview" \
-  -H "Authorization: ******"
+  -H "Authorization: Bearer ${TOKEN}"
 # Expected: {"@odata.context": "...", "value": <document-count>}
 ```
 

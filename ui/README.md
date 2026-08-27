@@ -45,6 +45,8 @@ npm run build
 
 Output goes to `ui/webapp/dist/`. Serve with any static file host or `npx serve dist`.
 
+The production container generates `/config.js` at startup. Set `API_BASE_URL` on the container to the backend origin; this allows the deployment to configure the API URL without rebuilding the Vite bundle.
+
 ## Lint
 
 ```bash
@@ -68,4 +70,5 @@ npm run lint
 
 | Variable | Default | Description |
 |----------|---------|-------------|
-| `VITE_API_BASE_URL` | `""` (relative) | Backend origin. Vite dev proxy forwards `/api` here. |
+| `VITE_API_BASE_URL` | `""` (relative) | Build-time backend origin. Vite dev proxy also uses it as its target. |
+| `API_BASE_URL` | `""` (relative) | Runtime backend origin generated into `/config.js` by the production container. |
