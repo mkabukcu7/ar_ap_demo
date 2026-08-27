@@ -7,9 +7,9 @@
     "currency": "USD",
     "amount": 13587.25,
     "received_amount": 11005.28,
-    "invoiced_amount": 0.0,
-    "remaining_amount": 13587.25,
-    "status": "open",
+    "invoiced_amount": 48250.0,
+    "remaining_amount": 0.0,
+    "status": "closed",
     "cost_center": "CC-101",
     "line_items": [
       {

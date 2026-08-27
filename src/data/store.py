@@ -52,6 +52,30 @@ class FinanceDataStore:
             self.remittances = self._load("remittances/remittances.json")
             self.knowledge = self._load_knowledge()
             self.activity: list[dict[str, Any]] = []
+            self._seed_activity()
+
+    def _seed_activity(self) -> None:
+        """Seed the activity feed so the dashboard has history on first load."""
+
+        blocked = [inv for inv in self.invoices if inv["status"] == "blocked"][:2]
+        unapplied = [rem for rem in self.remittances if rem["unapplied_amount"] > 0][:1]
+        posted = [inv for inv in self.invoices if inv["status"] == "posted"][:1]
+
+        self.record_activity("AP Agent", "document_extracted", f"{len(self.invoices)} invoices extracted with Content Understanding")
+        self.record_activity("Vendor Validation Agent", "vendor_master_check", f"{len(self.vendors)} suppliers validated against the vendor master")
+        for invoice in blocked:
+            codes = ", ".join(item["code"] for item in invoice["exceptions"]) or "policy review"
+            self.record_activity("Exception Resolution Agent", "exception_raised", f"{invoice['invoice_id']} blocked: {codes}", "failed")
+        for invoice in posted:
+            self.record_activity("AP Agent", "erp_posting", f"{invoice['invoice_id']} posted to ERP as {invoice['erp_document_id']}")
+        for remittance in unapplied:
+            self.record_activity(
+                "AR Agent",
+                "cash_application",
+                f"{remittance['remittance_id']} has {remittance['unapplied_amount']:,.2f} USD unapplied",
+                "failed",
+            )
+        self.record_activity("Finance Policy Agent", "knowledge_indexed", f"{len(self.knowledge)} policy passages indexed for retrieval")
 
     def _load(self, relative: str) -> list[dict[str, Any]]:
         path = self.data_dir / relative
@@ -170,8 +194,9 @@ def get_store(data_dir: Path | str | None = None) -> FinanceDataStore:
     """Return the process-wide data store (created on first use)."""
 
     global _STORE
-    if _STORE is None or data_dir is not None:
-        _STORE = FinanceDataStore(data_dir)
+    requested = Path(data_dir) if data_dir else DEFAULT_DATA_DIR
+    if _STORE is None or _STORE.data_dir != requested:
+        _STORE = FinanceDataStore(requested)
     return _STORE
 
 

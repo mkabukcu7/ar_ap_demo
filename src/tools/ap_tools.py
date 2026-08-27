@@ -24,6 +24,7 @@ APPROVAL_MATRIX = [
 PRICE_TOLERANCE_PCT = 0.02
 TOTAL_TOLERANCE_PCT = 0.0
 STRAIGHT_THROUGH_LIMIT = 2_000.00
+APPROVABLE_STATUSES = ("pending_approval", "matched", "validated")
 AUTO_APPROVE_CONFIDENCE = 0.80
 
 
@@ -323,7 +324,7 @@ def bulk_approve_invoices(
     for invoice in list(data.invoices):
         if invoice["total_amount"] >= max_amount:
             continue
-        if invoice["status"] not in {"pending_approval", "matched", "validated"}:
+        if invoice["status"] not in APPROVABLE_STATUSES:
             continue
         if require_no_exceptions and invoice["exceptions"]:
             skipped.append(

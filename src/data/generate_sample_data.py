@@ -321,22 +321,38 @@ def _apply_demo_invariants(
     duplicate_source["exceptions"] = []
     duplicate_source["erp_document_id"] = "ERP-AP-880031"
 
-    # Demo 1 — at least six invoices awaiting approval above $10,000.
-    high_value = [inv for inv in invoices if inv["total_amount"] > 10_000 and not inv["exceptions"]]
+    protected = {"INV-1047", "INV-1031"}
+
+    # Demo 1 — a healthy set of invoices awaiting approval above $10,000.
+    high_value = [
+        inv
+        for inv in invoices
+        if inv["total_amount"] > 10_000 and inv["invoice_id"] not in protected
+    ]
     for invoice in high_value[:6]:
+        invoice["exceptions"] = []
         invoice["status"] = "pending_approval"
 
     # Demo 3 — at least five clean invoices below $2,000 awaiting approval.
-    low_value = [inv for inv in invoices if inv["total_amount"] < 2_000]
+    low_value = [inv for inv in invoices if inv["total_amount"] < 2_000 and inv["invoice_id"] not in protected]
     for invoice in low_value[:5]:
         invoice["exceptions"] = []
         invoice["status"] = "pending_approval"
 
     # Demo 6 — at least three invoices above $25,000 awaiting approval.
-    executive = [inv for inv in invoices if inv["total_amount"] > 25_000 and inv["status"] != "blocked"]
-    for invoice in executive[:3]:
+    executive = [
+        inv
+        for inv in invoices
+        if inv["total_amount"] > 25_000 and inv["status"] != "blocked" and inv["invoice_id"] not in protected
+    ]
+    for invoice in executive[:4]:
         invoice["exceptions"] = []
         invoice["status"] = "pending_approval"
+
+    # Posted invoices always carry the ERP document reference written back by posting.
+    for invoice in invoices:
+        if invoice["status"] == "posted" and not invoice["erp_document_id"]:
+            invoice["erp_document_id"] = f"ERP-AP-{880000 + int(invoice['invoice_id'].split('-')[1])}"
 
     # Keep purchase order balances consistent with what has been invoiced.
     po_by_number = {order["po_number"]: order for order in purchase_orders}
