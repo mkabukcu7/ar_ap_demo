@@ -37,22 +37,22 @@ sed -i "s/<<RESOURCE_GROUP>>/$RESOURCE_GROUP/g"   infra/search/datasource-financ
 sed -i "s/<<STORAGE_ACCOUNT_NAME>>/$STORAGE_ACCOUNT/g" infra/search/datasource-finance-knowledge.json
 ```
 
-## Step 2 — Get a ******
+## Step 2 — Get an AAD access token
 
-```bash
+~~~bash
 TOKEN=$(az account get-access-token \
   --resource "https://search.azure.com" \
   --query accessToken -o tsv)
-```
+~~~
 
 ## Step 3 — Create the Index
 
-```bash
+~~~bash
 curl -X PUT "${SEARCH_ENDPOINT}/indexes/finance-knowledge?api-version=2024-05-01-preview" \
   -H "Content-Type: application/json" \
-  -H "Authorization: ******" \
+  -H "Authorization: Bearer ${TOKEN}" \
   -d @infra/search/index-finance-knowledge.json
-```
+~~~
 
 ## Step 4 — Create the Data Source
 
