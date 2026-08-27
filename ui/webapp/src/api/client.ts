@@ -45,7 +45,15 @@ export const api = {
     return fetchJSON<InvoicesResponse>(`/api/invoices${q ? `?${q}` : ''}`);
   },
 
-  invoice: (id: string) => fetchJSON<InvoicesResponse['items'][0]>(`/api/invoices/${id}`),
+  invoice: (id: string) =>
+    fetchJSON<{
+      found: boolean;
+      invoice?: InvoicesResponse['items'][0];
+      vendor?: unknown;
+      purchase_order?: unknown;
+      required_approvals?: string[];
+      message?: string;
+    }>(`/api/invoices/${id}`),
 
   approveInvoice: (invoice_id: string, approver?: string) =>
     fetchJSON<ApproveResponse>(`/api/invoices/${invoice_id}/approve`, {
