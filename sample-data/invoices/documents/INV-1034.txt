@@ -1,0 +1,19 @@
+Tailwind Traders Hardware
+INVOICE
+
+Invoice Number : TAIL-9034
+Invoice ID     : INV-1034
+Invoice Date   : 2026-03-23
+Due Date       : 2026-04-22
+Purchase Order : NOT PROVIDED
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Docking stations                    5 x     148.44 =       742.22
+  Network switches                   10 x      53.66 =       536.56
+
+Subtotal       : 1,278.78 USD
+Tax            : 105.50 USD
+Total Due      : 1,384.28 USD
+
+Remit payment per the terms agreed in the master services agreement.

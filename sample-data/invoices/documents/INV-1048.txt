@@ -1,0 +1,19 @@
+Woodgrove Advisory LLP
+INVOICE
+
+Invoice Number : WOOD-9048
+Invoice ID     : INV-1048
+Invoice Date   : 2026-03-11
+Due Date       : 2026-04-10
+Purchase Order : PO-7008
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Tax compliance                      5 x     803.97 =     4,019.83
+  Advisory hours                      5 x     456.22 =     2,281.12
+
+Subtotal       : 6,300.95 USD
+Tax            : 519.83 USD
+Total Due      : 6,820.78 USD
+
+Remit payment per the terms agreed in the master services agreement.

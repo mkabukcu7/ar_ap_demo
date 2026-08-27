@@ -1,0 +1,51 @@
+{
+  "name": "finance-knowledge-indexer",
+  "description": "Indexes finance knowledge documents from Azure Blob Storage into the finance-knowledge search index.",
+  "dataSourceName": "finance-knowledge-datasource",
+  "targetIndexName": "finance-knowledge",
+  "skillsetName": "finance-knowledge-skillset",
+  "schedule": {
+    "interval": "PT2H",
+    "startTime": "2025-01-01T00:00:00Z"
+  },
+  "parameters": {
+    "batchSize": 10,
+    "maxFailedItems": 5,
+    "maxFailedItemsPerBatch": 2,
+    "configuration": {
+      "dataToExtract": "contentAndMetadata",
+      "parsingMode": "default",
+      "failOnUnsupportedContentType": false,
+      "indexStorageMetadataOnlyForOversizedDocuments": true,
+      "excludedFileNameExtensions": ".png,.jpg,.jpeg,.gif,.bmp,.tiff"
+    }
+  },
+  "fieldMappings": [
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "id",
+      "mappingFunction": {
+        "name": "base64Encode"
+      }
+    },
+    {
+      "sourceFieldName": "metadata_storage_name",
+      "targetFieldName": "title"
+    },
+    {
+      "sourceFieldName": "metadata_storage_path",
+      "targetFieldName": "source"
+    },
+    {
+      "sourceFieldName": "metadata_storage_last_modified",
+      "targetFieldName": "last_updated"
+    }
+  ],
+  "outputFieldMappings": [
+    {
+      "sourceFieldName": "/document/pages/*/content_vector",
+      "targetFieldName": "content_vector"
+    }
+  ],
+  "disabled": false
+}

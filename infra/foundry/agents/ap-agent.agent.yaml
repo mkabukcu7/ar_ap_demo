@@ -1,0 +1,73 @@
+# ============================================================
+# Agent: Accounts Payable (AP) Agent
+# Role: End-to-end AP invoice processing — from ingestion
+#       through matching, approval, and ERP posting.
+# ============================================================
+
+name: ap-agent
+display_name: Accounts Payable Agent
+description: >
+  Specialist agent for Accounts Payable operations. Processes invoices
+  extracted by Azure AI Document Intelligence, performs 3-way matching
+  against purchase orders, detects duplicates, routes for approval,
+  and posts approved invoices to the ERP system.
+
+model: gpt-5.4
+model_parameters:
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 4096
+
+instructions_file: src/prompts/ap-agent.md
+
+# -------- Function Tools --------
+tools:
+  - type: function
+    function:
+      name: search_invoices
+      description: Search and filter invoices by vendor, date range, status, or amount.
+
+  - type: function
+    function:
+      name: get_invoice
+      description: Retrieve full details of a specific invoice by ID.
+
+  - type: function
+    function:
+      name: match_invoice_to_po
+      description: Perform 2-way or 3-way PO matching for an invoice.
+
+  - type: function
+    function:
+      name: detect_duplicate_invoice
+      description: Check whether an invoice is a duplicate of an existing record.
+
+  - type: function
+    function:
+      name: validate_vendor
+      description: Validate vendor master data including tax ID and banking details.
+
+  - type: function
+    function:
+      name: approve_invoice
+      description: Approve a single invoice after validation and matching.
+
+  - type: function
+    function:
+      name: bulk_approve_invoices
+      description: Bulk-approve a list of invoices that meet approval criteria.
+
+  - type: function
+    function:
+      name: list_exceptions
+      description: List AP exceptions requiring manual review or escalation.
+
+  - type: function
+    function:
+      name: post_invoice_to_erp
+      description: Post an approved invoice to the ERP system.
+
+# -------- Metadata --------
+tags:
+  role: specialist
+  domain: accounts-payable

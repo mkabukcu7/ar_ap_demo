@@ -1,0 +1,13 @@
+Fourth Coffee
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4015
+Payment Date     : 2026-03-18
+Payment Method   : ACH
+Payment Reference: ACH-600195
+Payment Amount   : 47,704.48 USD
+
+Invoices Referenced
+  ARI-3015        47,704.48
+
+Questions regarding this payment should be directed to accounts payable.

@@ -1,0 +1,1958 @@
+[
+  {
+    "invoice_id": "INV-1001",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "invoice_number": "WOOD-9001",
+    "invoice_date": "2026-03-05",
+    "received_date": "2026-03-06",
+    "due_date": "2026-04-04",
+    "currency": "USD",
+    "subtotal": 3942.42,
+    "tax_amount": 325.25,
+    "total_amount": 4267.67,
+    "po_number": "PO-7032",
+    "cost_center": "CC-108",
+    "status": "posted",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      },
+      {
+        "code": "PRICE_VARIANCE",
+        "severity": "medium",
+        "message": "Unit price exceeds the contracted price by more than tolerance."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Statutory audit fees",
+        "quantity": 10,
+        "unit_price": 204.92,
+        "amount": 2049.21
+      },
+      {
+        "description": "Advisory hours",
+        "quantity": 2,
+        "unit_price": 946.61,
+        "amount": 1893.21
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1001.txt",
+    "extraction_confidence": 0.748,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1002",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "invoice_number": "WOOD-9002",
+    "invoice_date": "2026-02-24",
+    "received_date": "2026-02-25",
+    "due_date": "2026-03-26",
+    "currency": "USD",
+    "subtotal": 1997.12,
+    "tax_amount": 164.76,
+    "total_amount": 2161.88,
+    "po_number": null,
+    "cost_center": "CC-102",
+    "status": "approved",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Project management",
+        "quantity": 5,
+        "unit_price": 399.42,
+        "amount": 1997.12
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1002.txt",
+    "extraction_confidence": 0.774,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1003",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "invoice_number": "WOOD-9003",
+    "invoice_date": "2026-03-21",
+    "received_date": "2026-03-26",
+    "due_date": "2026-04-20",
+    "currency": "USD",
+    "subtotal": 1797.7,
+    "tax_amount": 148.31,
+    "total_amount": 1946.01,
+    "po_number": "PO-7020",
+    "cost_center": "CC-108",
+    "status": "pending_approval",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Project management",
+        "quantity": 1,
+        "unit_price": 1797.7,
+        "amount": 1797.7
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1003.txt",
+    "extraction_confidence": 0.904,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1004",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "invoice_number": "CONT-9004",
+    "invoice_date": "2026-03-04",
+    "received_date": "2026-03-04",
+    "due_date": "2026-05-03",
+    "currency": "USD",
+    "subtotal": 2188.19,
+    "tax_amount": 180.53,
+    "total_amount": 2368.72,
+    "po_number": "PO-7037",
+    "cost_center": "CC-101",
+    "status": "validated",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Cloud consumption",
+        "quantity": 2,
+        "unit_price": 1094.1,
+        "amount": 2188.19
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1004.txt",
+    "extraction_confidence": 0.968,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1005",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "invoice_number": "LITW-9005",
+    "invoice_date": "2026-02-07",
+    "received_date": "2026-02-11",
+    "due_date": "2026-03-24",
+    "currency": "USD",
+    "subtotal": 25855.49,
+    "tax_amount": 2133.08,
+    "total_amount": 27988.57,
+    "po_number": "PO-7027",
+    "cost_center": "CC-103",
+    "status": "blocked",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_AMOUNT_MISMATCH",
+        "severity": "high",
+        "message": "Invoice total exceeds the remaining purchase order balance."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Project management",
+        "quantity": 12,
+        "unit_price": 1053.95,
+        "amount": 12647.36
+      },
+      {
+        "description": "Advisory hours",
+        "quantity": 1,
+        "unit_price": 13208.13,
+        "amount": 13208.13
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1005.txt",
+    "extraction_confidence": 0.917,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1006",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9006",
+    "invoice_date": "2026-03-24",
+    "received_date": "2026-03-24",
+    "due_date": "2026-05-08",
+    "currency": "USD",
+    "subtotal": 13510.44,
+    "tax_amount": 1114.61,
+    "total_amount": 14625.05,
+    "po_number": null,
+    "cost_center": "CC-106",
+    "status": "posted",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Data platform support",
+        "quantity": 12,
+        "unit_price": 611.9,
+        "amount": 7342.82
+      },
+      {
+        "description": "Managed detection & response",
+        "quantity": 5,
+        "unit_price": 1233.52,
+        "amount": 6167.62
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1006.txt",
+    "extraction_confidence": 0.99,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1007",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9007",
+    "invoice_date": "2026-03-13",
+    "received_date": "2026-03-16",
+    "due_date": "2026-04-27",
+    "currency": "USD",
+    "subtotal": 35565.8,
+    "tax_amount": 2934.18,
+    "total_amount": 38499.98,
+    "po_number": "PO-7033",
+    "cost_center": "CC-109",
+    "status": "pending_approval",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Managed detection & response",
+        "quantity": 2,
+        "unit_price": 17782.9,
+        "amount": 35565.8
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1007.txt",
+    "extraction_confidence": 0.751,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1008",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "invoice_number": "CONT-9008",
+    "invoice_date": "2026-02-20",
+    "received_date": "2026-02-23",
+    "due_date": "2026-04-21",
+    "currency": "USD",
+    "subtotal": 817.4,
+    "tax_amount": 67.44,
+    "total_amount": 884.84,
+    "po_number": "PO-7001",
+    "cost_center": "CC-101",
+    "status": "pending_approval",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Data platform support",
+        "quantity": 5,
+        "unit_price": 163.48,
+        "amount": 817.4
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1008.txt",
+    "extraction_confidence": 0.84,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1009",
+    "vendor_id": "VEN-2006",
+    "vendor_name": "Tailwind Traders Hardware",
+    "invoice_number": "TAIL-9009",
+    "invoice_date": "2026-03-13",
+    "received_date": "2026-03-18",
+    "due_date": "2026-04-12",
+    "currency": "USD",
+    "subtotal": 8801.4,
+    "tax_amount": 726.12,
+    "total_amount": 9527.52,
+    "po_number": null,
+    "cost_center": "CC-109",
+    "status": "validated",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      },
+      {
+        "code": "PRICE_VARIANCE",
+        "severity": "medium",
+        "message": "Unit price exceeds the contracted price by more than tolerance."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Docking stations",
+        "quantity": 2,
+        "unit_price": 2005.71,
+        "amount": 4011.42
+      },
+      {
+        "description": "Monitors",
+        "quantity": 1,
+        "unit_price": 4789.98,
+        "amount": 4789.98
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1009.txt",
+    "extraction_confidence": 0.932,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1010",
+    "vendor_id": "VEN-2012",
+    "vendor_name": "Lamna Healthcare Staffing",
+    "invoice_number": "LAMN-9010",
+    "invoice_date": "2026-02-12",
+    "received_date": "2026-02-15",
+    "due_date": "2026-03-14",
+    "currency": "USD",
+    "subtotal": 761.46,
+    "tax_amount": 62.82,
+    "total_amount": 824.28,
+    "po_number": "PO-7023",
+    "cost_center": "CC-111",
+    "status": "pending_approval",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Recruiting fees",
+        "quantity": 4,
+        "unit_price": 84.44,
+        "amount": 337.76
+      },
+      {
+        "description": "Contract nursing hours",
+        "quantity": 10,
+        "unit_price": 21.74,
+        "amount": 217.42
+      },
+      {
+        "description": "Onboarding services",
+        "quantity": 12,
+        "unit_price": 17.19,
+        "amount": 206.28
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1010.txt",
+    "extraction_confidence": 0.772,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1011",
+    "vendor_id": "VEN-2012",
+    "vendor_name": "Lamna Healthcare Staffing",
+    "invoice_number": "LAMN-9011",
+    "invoice_date": "2026-03-12",
+    "received_date": "2026-03-16",
+    "due_date": "2026-04-11",
+    "currency": "USD",
+    "subtotal": 8975.78,
+    "tax_amount": 740.5,
+    "total_amount": 9716.28,
+    "po_number": "PO-7023",
+    "cost_center": "CC-111",
+    "status": "blocked",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_AMOUNT_MISMATCH",
+        "severity": "high",
+        "message": "Invoice total exceeds the remaining purchase order balance."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Onboarding services",
+        "quantity": 2,
+        "unit_price": 2388.14,
+        "amount": 4776.27
+      },
+      {
+        "description": "Temporary staffing",
+        "quantity": 12,
+        "unit_price": 189.5,
+        "amount": 2274.02
+      },
+      {
+        "description": "Recruiting fees",
+        "quantity": 2,
+        "unit_price": 962.75,
+        "amount": 1925.49
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1011.txt",
+    "extraction_confidence": 0.912,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1012",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9012",
+    "invoice_date": "2026-02-16",
+    "received_date": "2026-02-21",
+    "due_date": "2026-04-02",
+    "currency": "USD",
+    "subtotal": 9110.64,
+    "tax_amount": 751.63,
+    "total_amount": 9862.27,
+    "po_number": "PO-7021",
+    "cost_center": "CC-109",
+    "status": "posted",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Software subscription",
+        "quantity": 10,
+        "unit_price": 367.06,
+        "amount": 3670.55
+      },
+      {
+        "description": "Managed detection & response",
+        "quantity": 12,
+        "unit_price": 281.85,
+        "amount": 3382.24
+      },
+      {
+        "description": "Cloud consumption",
+        "quantity": 4,
+        "unit_price": 514.46,
+        "amount": 2057.85
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1012.txt",
+    "extraction_confidence": 0.937,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1013",
+    "vendor_id": "VEN-2011",
+    "vendor_name": "VanArsdel Print & Media",
+    "invoice_number": "VANA-9013",
+    "invoice_date": "2026-03-07",
+    "received_date": "2026-03-07",
+    "due_date": "2026-05-06",
+    "currency": "USD",
+    "subtotal": 9272.17,
+    "tax_amount": 764.95,
+    "total_amount": 10037.12,
+    "po_number": "PO-7010",
+    "cost_center": "CC-110",
+    "status": "blocked",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "VENDOR_NOT_APPROVED",
+        "severity": "high",
+        "message": "Vendor is not in an approved status in the vendor master."
+      },
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Event sponsorship",
+        "quantity": 4,
+        "unit_price": 475.19,
+        "amount": 1900.75
+      },
+      {
+        "description": "Media placement",
+        "quantity": 1,
+        "unit_price": 2854.81,
+        "amount": 2854.81
+      },
+      {
+        "description": "Creative retainer",
+        "quantity": 5,
+        "unit_price": 903.32,
+        "amount": 4516.61
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1013.txt",
+    "extraction_confidence": 0.79,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1014",
+    "vendor_id": "VEN-2008",
+    "vendor_name": "Wide World Importers",
+    "invoice_number": "WIDE-9014",
+    "invoice_date": "2026-01-15",
+    "received_date": "2026-01-15",
+    "due_date": "2026-03-16",
+    "currency": "USD",
+    "subtotal": 21825.28,
+    "tax_amount": 1800.59,
+    "total_amount": 23625.87,
+    "po_number": null,
+    "cost_center": "CC-102",
+    "status": "matched",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Packaging materials",
+        "quantity": 4,
+        "unit_price": 5456.32,
+        "amount": 21825.28
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1014.txt",
+    "extraction_confidence": 0.812,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1015",
+    "vendor_id": "VEN-2008",
+    "vendor_name": "Wide World Importers",
+    "invoice_number": "WIDE-9015",
+    "invoice_date": "2026-02-28",
+    "received_date": "2026-03-02",
+    "due_date": "2026-04-29",
+    "currency": "USD",
+    "subtotal": 890.93,
+    "tax_amount": 73.5,
+    "total_amount": 964.43,
+    "po_number": null,
+    "cost_center": "CC-103",
+    "status": "pending_approval",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Safety equipment",
+        "quantity": 5,
+        "unit_price": 178.19,
+        "amount": 890.93
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1015.txt",
+    "extraction_confidence": 0.849,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1016",
+    "vendor_id": "VEN-2007",
+    "vendor_name": "Proseware Marketing",
+    "invoice_number": "PROS-9016",
+    "invoice_date": "2026-02-17",
+    "received_date": "2026-02-22",
+    "due_date": "2026-04-03",
+    "currency": "USD",
+    "subtotal": 1723.67,
+    "tax_amount": 142.2,
+    "total_amount": 1865.87,
+    "po_number": "PO-7018",
+    "cost_center": "CC-106",
+    "status": "pending_approval",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Campaign production",
+        "quantity": 10,
+        "unit_price": 172.37,
+        "amount": 1723.67
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1016.txt",
+    "extraction_confidence": 0.848,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1017",
+    "vendor_id": "VEN-2001",
+    "vendor_name": "Northwind Facilities Group",
+    "invoice_number": "NORT-9017",
+    "invoice_date": "2026-03-26",
+    "received_date": "2026-03-31",
+    "due_date": "2026-05-10",
+    "currency": "USD",
+    "subtotal": 8157.83,
+    "tax_amount": 673.02,
+    "total_amount": 8830.85,
+    "po_number": null,
+    "cost_center": "CC-105",
+    "status": "validated",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Landscaping",
+        "quantity": 5,
+        "unit_price": 698.39,
+        "amount": 3491.93
+      },
+      {
+        "description": "Security services",
+        "quantity": 5,
+        "unit_price": 933.18,
+        "amount": 4665.9
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1017.txt",
+    "extraction_confidence": 0.916,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1018",
+    "vendor_id": "VEN-2012",
+    "vendor_name": "Lamna Healthcare Staffing",
+    "invoice_number": "LAMN-9018",
+    "invoice_date": "2026-02-23",
+    "received_date": "2026-02-23",
+    "due_date": "2026-03-25",
+    "currency": "USD",
+    "subtotal": 2390.09,
+    "tax_amount": 197.18,
+    "total_amount": 2587.27,
+    "po_number": null,
+    "cost_center": "CC-106",
+    "status": "posted",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Temporary staffing",
+        "quantity": 4,
+        "unit_price": 267.55,
+        "amount": 1070.21
+      },
+      {
+        "description": "Contract nursing hours",
+        "quantity": 5,
+        "unit_price": 263.98,
+        "amount": 1319.88
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1018.txt",
+    "extraction_confidence": 0.892,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1019",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "invoice_number": "FABR-9019",
+    "invoice_date": "2026-02-01",
+    "received_date": "2026-02-05",
+    "due_date": "2026-03-03",
+    "currency": "USD",
+    "subtotal": 2811.24,
+    "tax_amount": 231.93,
+    "total_amount": 3043.17,
+    "po_number": null,
+    "cost_center": "CC-107",
+    "status": "pending_approval",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Outbound freight",
+        "quantity": 4,
+        "unit_price": 702.81,
+        "amount": 2811.24
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1019.txt",
+    "extraction_confidence": 0.873,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1020",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "invoice_number": "FABR-9020",
+    "invoice_date": "2026-03-01",
+    "received_date": "2026-03-03",
+    "due_date": "2026-03-31",
+    "currency": "USD",
+    "subtotal": 3955.52,
+    "tax_amount": 326.33,
+    "total_amount": 4281.85,
+    "po_number": "PO-7026",
+    "cost_center": "CC-102",
+    "status": "pending_approval",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Customs brokerage",
+        "quantity": 1,
+        "unit_price": 3955.52,
+        "amount": 3955.52
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1020.txt",
+    "extraction_confidence": 0.93,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1021",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "invoice_number": "LITW-9021",
+    "invoice_date": "2026-03-27",
+    "received_date": "2026-03-31",
+    "due_date": "2026-05-11",
+    "currency": "USD",
+    "subtotal": 3876.01,
+    "tax_amount": 319.77,
+    "total_amount": 4195.78,
+    "po_number": "PO-7015",
+    "cost_center": "CC-103",
+    "status": "received",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Tax compliance",
+        "quantity": 4,
+        "unit_price": 549.63,
+        "amount": 2198.54
+      },
+      {
+        "description": "Statutory audit fees",
+        "quantity": 2,
+        "unit_price": 838.74,
+        "amount": 1677.47
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1021.txt",
+    "extraction_confidence": 0.823,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1022",
+    "vendor_id": "VEN-2011",
+    "vendor_name": "VanArsdel Print & Media",
+    "invoice_number": "VANA-9022",
+    "invoice_date": "2026-01-24",
+    "received_date": "2026-01-26",
+    "due_date": "2026-03-25",
+    "currency": "USD",
+    "subtotal": 1755.58,
+    "tax_amount": 144.84,
+    "total_amount": 1900.42,
+    "po_number": "PO-7034",
+    "cost_center": "CC-110",
+    "status": "blocked",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "VENDOR_NOT_APPROVED",
+        "severity": "high",
+        "message": "Vendor is not in an approved status in the vendor master."
+      },
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Creative retainer",
+        "quantity": 4,
+        "unit_price": 438.89,
+        "amount": 1755.58
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1022.txt",
+    "extraction_confidence": 0.786,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1023",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9023",
+    "invoice_date": "2026-02-11",
+    "received_date": "2026-02-11",
+    "due_date": "2026-03-28",
+    "currency": "USD",
+    "subtotal": 14283.29,
+    "tax_amount": 1178.37,
+    "total_amount": 15461.66,
+    "po_number": "PO-7021",
+    "cost_center": "CC-109",
+    "status": "pending_approval",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Data platform support",
+        "quantity": 10,
+        "unit_price": 863.24,
+        "amount": 8632.4
+      },
+      {
+        "description": "Cloud consumption",
+        "quantity": 4,
+        "unit_price": 1412.72,
+        "amount": 5650.89
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1023.txt",
+    "extraction_confidence": 0.882,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1024",
+    "vendor_id": "VEN-2005",
+    "vendor_name": "Adventure Works Supply",
+    "invoice_number": "ADVE-9024",
+    "invoice_date": "2026-03-01",
+    "received_date": "2026-03-03",
+    "due_date": "2026-04-30",
+    "currency": "USD",
+    "subtotal": 9711.65,
+    "tax_amount": 801.21,
+    "total_amount": 10512.86,
+    "po_number": "PO-7028",
+    "cost_center": "CC-104",
+    "status": "approved",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Office supplies",
+        "quantity": 1,
+        "unit_price": 3891.34,
+        "amount": 3891.34
+      },
+      {
+        "description": "Safety equipment",
+        "quantity": 4,
+        "unit_price": 781.53,
+        "amount": 3126.13
+      },
+      {
+        "description": "Packaging materials",
+        "quantity": 4,
+        "unit_price": 673.54,
+        "amount": 2694.18
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1024.txt",
+    "extraction_confidence": 0.794,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1025",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "invoice_number": "LITW-9025",
+    "invoice_date": "2026-02-03",
+    "received_date": "2026-02-08",
+    "due_date": "2026-03-20",
+    "currency": "USD",
+    "subtotal": 20971.64,
+    "tax_amount": 1730.16,
+    "total_amount": 22701.8,
+    "po_number": "PO-7039",
+    "cost_center": "CC-103",
+    "status": "extracted",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Advisory hours",
+        "quantity": 2,
+        "unit_price": 10485.82,
+        "amount": 20971.64
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1025.txt",
+    "extraction_confidence": 0.757,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1026",
+    "vendor_id": "VEN-2008",
+    "vendor_name": "Wide World Importers",
+    "invoice_number": "WIDE-9026",
+    "invoice_date": "2026-01-19",
+    "received_date": "2026-01-22",
+    "due_date": "2026-03-20",
+    "currency": "USD",
+    "subtotal": 1703.18,
+    "tax_amount": 140.51,
+    "total_amount": 1843.69,
+    "po_number": null,
+    "cost_center": "CC-102",
+    "status": "pending_approval",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Lab consumables",
+        "quantity": 4,
+        "unit_price": 98.77,
+        "amount": 395.08
+      },
+      {
+        "description": "Packaging materials",
+        "quantity": 5,
+        "unit_price": 115.42,
+        "amount": 577.08
+      },
+      {
+        "description": "Safety equipment",
+        "quantity": 5,
+        "unit_price": 146.2,
+        "amount": 731.02
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1026.txt",
+    "extraction_confidence": 0.806,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1027",
+    "vendor_id": "VEN-2007",
+    "vendor_name": "Proseware Marketing",
+    "invoice_number": "PROS-9027",
+    "invoice_date": "2026-01-24",
+    "received_date": "2026-01-29",
+    "due_date": "2026-03-10",
+    "currency": "USD",
+    "subtotal": 7597.57,
+    "tax_amount": 626.8,
+    "total_amount": 8224.37,
+    "po_number": "PO-7018",
+    "cost_center": "CC-106",
+    "status": "blocked",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "VENDOR_NOT_APPROVED",
+        "severity": "high",
+        "message": "Vendor is not in an approved status in the vendor master."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Event sponsorship",
+        "quantity": 4,
+        "unit_price": 635.41,
+        "amount": 2541.64
+      },
+      {
+        "description": "Campaign production",
+        "quantity": 5,
+        "unit_price": 565.88,
+        "amount": 2829.38
+      },
+      {
+        "description": "Creative retainer",
+        "quantity": 4,
+        "unit_price": 556.64,
+        "amount": 2226.55
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1027.txt",
+    "extraction_confidence": 0.969,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1028",
+    "vendor_id": "VEN-2011",
+    "vendor_name": "VanArsdel Print & Media",
+    "invoice_number": "VANA-9028",
+    "invoice_date": "2026-01-25",
+    "received_date": "2026-01-28",
+    "due_date": "2026-03-26",
+    "currency": "USD",
+    "subtotal": 680.36,
+    "tax_amount": 56.13,
+    "total_amount": 736.49,
+    "po_number": "PO-7034",
+    "cost_center": "CC-110",
+    "status": "blocked",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "VENDOR_NOT_APPROVED",
+        "severity": "high",
+        "message": "Vendor is not in an approved status in the vendor master."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Campaign production",
+        "quantity": 10,
+        "unit_price": 68.04,
+        "amount": 680.36
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1028.txt",
+    "extraction_confidence": 0.979,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1029",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9029",
+    "invoice_date": "2026-01-31",
+    "received_date": "2026-02-04",
+    "due_date": "2026-03-17",
+    "currency": "USD",
+    "subtotal": 22435.24,
+    "tax_amount": 1850.91,
+    "total_amount": 24286.15,
+    "po_number": "PO-7009",
+    "cost_center": "CC-109",
+    "status": "blocked",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_AMOUNT_MISMATCH",
+        "severity": "high",
+        "message": "Invoice total exceeds the remaining purchase order balance."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Managed detection & response",
+        "quantity": 4,
+        "unit_price": 5608.81,
+        "amount": 22435.24
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1029.txt",
+    "extraction_confidence": 0.817,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1030",
+    "vendor_id": "VEN-2001",
+    "vendor_name": "Northwind Facilities Group",
+    "invoice_number": "NORT-9030",
+    "invoice_date": "2026-03-13",
+    "received_date": "2026-03-14",
+    "due_date": "2026-04-27",
+    "currency": "USD",
+    "subtotal": 958.78,
+    "tax_amount": 79.1,
+    "total_amount": 1037.88,
+    "po_number": "PO-7024",
+    "cost_center": "CC-100",
+    "status": "pending_approval",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "HVAC maintenance",
+        "quantity": 1,
+        "unit_price": 316.78,
+        "amount": 316.78
+      },
+      {
+        "description": "Landscaping",
+        "quantity": 10,
+        "unit_price": 33.37,
+        "amount": 333.68
+      },
+      {
+        "description": "Security services",
+        "quantity": 5,
+        "unit_price": 61.66,
+        "amount": 308.32
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1030.txt",
+    "extraction_confidence": 0.877,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1031",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "invoice_number": "WOOD-9031",
+    "invoice_date": "2026-03-10",
+    "received_date": "2026-03-13",
+    "due_date": "2026-04-09",
+    "currency": "USD",
+    "subtotal": 44572.98,
+    "tax_amount": 3677.02,
+    "total_amount": 48250.0,
+    "po_number": "PO-7001",
+    "cost_center": "CC-108",
+    "status": "pending_approval",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Tax compliance",
+        "quantity": 12,
+        "unit_price": 21.92,
+        "amount": 263.0
+      },
+      {
+        "description": "Advisory hours",
+        "quantity": 10,
+        "unit_price": 58.95,
+        "amount": 589.55
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1031.txt",
+    "extraction_confidence": 0.766,
+    "erp_document_id": "ERP-AP-880031"
+  },
+  {
+    "invoice_id": "INV-1032",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9032",
+    "invoice_date": "2026-01-25",
+    "received_date": "2026-01-30",
+    "due_date": "2026-03-11",
+    "currency": "USD",
+    "subtotal": 1198.4,
+    "tax_amount": 98.87,
+    "total_amount": 1297.27,
+    "po_number": "PO-7021",
+    "cost_center": "CC-109",
+    "status": "approved",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Data platform support",
+        "quantity": 1,
+        "unit_price": 483.17,
+        "amount": 483.17
+      },
+      {
+        "description": "Managed detection & response",
+        "quantity": 10,
+        "unit_price": 50.61,
+        "amount": 506.05
+      },
+      {
+        "description": "Software subscription",
+        "quantity": 1,
+        "unit_price": 209.18,
+        "amount": 209.18
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1032.txt",
+    "extraction_confidence": 0.955,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1033",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9033",
+    "invoice_date": "2026-03-12",
+    "received_date": "2026-03-16",
+    "due_date": "2026-04-26",
+    "currency": "USD",
+    "subtotal": 2318.51,
+    "tax_amount": 191.28,
+    "total_amount": 2509.79,
+    "po_number": "PO-7033",
+    "cost_center": "CC-109",
+    "status": "pending_approval",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Managed detection & response",
+        "quantity": 5,
+        "unit_price": 463.7,
+        "amount": 2318.51
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1033.txt",
+    "extraction_confidence": 0.908,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1034",
+    "vendor_id": "VEN-2006",
+    "vendor_name": "Tailwind Traders Hardware",
+    "invoice_number": "TAIL-9034",
+    "invoice_date": "2026-03-23",
+    "received_date": "2026-03-27",
+    "due_date": "2026-04-22",
+    "currency": "USD",
+    "subtotal": 1278.78,
+    "tax_amount": 105.5,
+    "total_amount": 1384.28,
+    "po_number": null,
+    "cost_center": "CC-110",
+    "status": "received",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_MISSING",
+        "severity": "medium",
+        "message": "No purchase order referenced on a PO-required invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Docking stations",
+        "quantity": 5,
+        "unit_price": 148.44,
+        "amount": 742.22
+      },
+      {
+        "description": "Network switches",
+        "quantity": 10,
+        "unit_price": 53.66,
+        "amount": 536.56
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1034.txt",
+    "extraction_confidence": 0.893,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1035",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "invoice_number": "LITW-9035",
+    "invoice_date": "2026-02-16",
+    "received_date": "2026-02-21",
+    "due_date": "2026-04-02",
+    "currency": "USD",
+    "subtotal": 999.25,
+    "tax_amount": 82.44,
+    "total_amount": 1081.69,
+    "po_number": "PO-7039",
+    "cost_center": "CC-103",
+    "status": "received",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Advisory hours",
+        "quantity": 4,
+        "unit_price": 249.81,
+        "amount": 999.25
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1035.txt",
+    "extraction_confidence": 0.824,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1036",
+    "vendor_id": "VEN-2006",
+    "vendor_name": "Tailwind Traders Hardware",
+    "invoice_number": "TAIL-9036",
+    "invoice_date": "2026-02-13",
+    "received_date": "2026-02-18",
+    "due_date": "2026-03-15",
+    "currency": "USD",
+    "subtotal": 1840.87,
+    "tax_amount": 151.87,
+    "total_amount": 1992.74,
+    "po_number": "PO-7005",
+    "cost_center": "CC-105",
+    "status": "matched",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Monitors",
+        "quantity": 10,
+        "unit_price": 81.21,
+        "amount": 812.12
+      },
+      {
+        "description": "Laptops",
+        "quantity": 12,
+        "unit_price": 43.51,
+        "amount": 522.12
+      },
+      {
+        "description": "Network switches",
+        "quantity": 10,
+        "unit_price": 50.66,
+        "amount": 506.63
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1036.txt",
+    "extraction_confidence": 0.91,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1037",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "invoice_number": "WOOD-9037",
+    "invoice_date": "2026-02-07",
+    "received_date": "2026-02-07",
+    "due_date": "2026-03-09",
+    "currency": "USD",
+    "subtotal": 11405.75,
+    "tax_amount": 940.97,
+    "total_amount": 12346.72,
+    "po_number": "PO-7020",
+    "cost_center": "CC-108",
+    "status": "pending_approval",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Advisory hours",
+        "quantity": 2,
+        "unit_price": 1662.65,
+        "amount": 3325.3
+      },
+      {
+        "description": "Tax compliance",
+        "quantity": 4,
+        "unit_price": 1233.74,
+        "amount": 4934.95
+      },
+      {
+        "description": "Project management",
+        "quantity": 2,
+        "unit_price": 1572.75,
+        "amount": 3145.5
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1037.txt",
+    "extraction_confidence": 0.82,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1038",
+    "vendor_id": "VEN-2001",
+    "vendor_name": "Northwind Facilities Group",
+    "invoice_number": "NORT-9038",
+    "invoice_date": "2026-02-03",
+    "received_date": "2026-02-04",
+    "due_date": "2026-03-20",
+    "currency": "USD",
+    "subtotal": 9575.12,
+    "tax_amount": 789.95,
+    "total_amount": 10365.07,
+    "po_number": "PO-7012",
+    "cost_center": "CC-100",
+    "status": "received",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Janitorial services",
+        "quantity": 1,
+        "unit_price": 9575.12,
+        "amount": 9575.12
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1038.txt",
+    "extraction_confidence": 0.764,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1039",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "invoice_number": "LITW-9039",
+    "invoice_date": "2026-03-21",
+    "received_date": "2026-03-21",
+    "due_date": "2026-05-05",
+    "currency": "USD",
+    "subtotal": 8472.16,
+    "tax_amount": 698.95,
+    "total_amount": 9171.11,
+    "po_number": "PO-7003",
+    "cost_center": "CC-103",
+    "status": "blocked",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_AMOUNT_MISMATCH",
+        "severity": "high",
+        "message": "Invoice total exceeds the remaining purchase order balance."
+      },
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Advisory hours",
+        "quantity": 2,
+        "unit_price": 1207.37,
+        "amount": 2414.74
+      },
+      {
+        "description": "Project management",
+        "quantity": 5,
+        "unit_price": 1211.48,
+        "amount": 6057.42
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1039.txt",
+    "extraction_confidence": 0.748,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1040",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9040",
+    "invoice_date": "2026-03-17",
+    "received_date": "2026-03-22",
+    "due_date": "2026-05-01",
+    "currency": "USD",
+    "subtotal": 23479.11,
+    "tax_amount": 1937.03,
+    "total_amount": 25416.14,
+    "po_number": "PO-7033",
+    "cost_center": "CC-109",
+    "status": "pending_approval",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Cloud consumption",
+        "quantity": 1,
+        "unit_price": 16003.79,
+        "amount": 16003.79
+      },
+      {
+        "description": "Software subscription",
+        "quantity": 12,
+        "unit_price": 622.94,
+        "amount": 7475.32
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1040.txt",
+    "extraction_confidence": 0.766,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1041",
+    "vendor_id": "VEN-2005",
+    "vendor_name": "Adventure Works Supply",
+    "invoice_number": "ADVE-9041",
+    "invoice_date": "2026-02-05",
+    "received_date": "2026-02-08",
+    "due_date": "2026-04-06",
+    "currency": "USD",
+    "subtotal": 17942.6,
+    "tax_amount": 1480.26,
+    "total_amount": 19422.86,
+    "po_number": "PO-7028",
+    "cost_center": "CC-104",
+    "status": "validated",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Lab consumables",
+        "quantity": 4,
+        "unit_price": 4485.65,
+        "amount": 17942.6
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1041.txt",
+    "extraction_confidence": 0.794,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1042",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "invoice_number": "WOOD-9042",
+    "invoice_date": "2026-03-18",
+    "received_date": "2026-03-23",
+    "due_date": "2026-04-17",
+    "currency": "USD",
+    "subtotal": 1901.47,
+    "tax_amount": 156.87,
+    "total_amount": 2058.34,
+    "po_number": null,
+    "cost_center": "CC-106",
+    "status": "received",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Advisory hours",
+        "quantity": 4,
+        "unit_price": 183.25,
+        "amount": 732.98
+      },
+      {
+        "description": "Tax compliance",
+        "quantity": 2,
+        "unit_price": 215.13,
+        "amount": 430.27
+      },
+      {
+        "description": "Project management",
+        "quantity": 4,
+        "unit_price": 184.56,
+        "amount": 738.22
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1042.txt",
+    "extraction_confidence": 0.793,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1043",
+    "vendor_id": "VEN-2006",
+    "vendor_name": "Tailwind Traders Hardware",
+    "invoice_number": "TAIL-9043",
+    "invoice_date": "2026-02-20",
+    "received_date": "2026-02-25",
+    "due_date": "2026-03-22",
+    "currency": "USD",
+    "subtotal": 894.57,
+    "tax_amount": 73.8,
+    "total_amount": 968.37,
+    "po_number": "PO-7029",
+    "cost_center": "CC-105",
+    "status": "pending_approval",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Docking stations",
+        "quantity": 10,
+        "unit_price": 89.46,
+        "amount": 894.57
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1043.txt",
+    "extraction_confidence": 0.817,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1044",
+    "vendor_id": "VEN-2001",
+    "vendor_name": "Northwind Facilities Group",
+    "invoice_number": "NORT-9044",
+    "invoice_date": "2026-02-19",
+    "received_date": "2026-02-20",
+    "due_date": "2026-04-05",
+    "currency": "USD",
+    "subtotal": 1393.31,
+    "tax_amount": 114.95,
+    "total_amount": 1508.26,
+    "po_number": "PO-7012",
+    "cost_center": "CC-100",
+    "status": "approved",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Janitorial services",
+        "quantity": 2,
+        "unit_price": 696.65,
+        "amount": 1393.31
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1044.txt",
+    "extraction_confidence": 0.833,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1045",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "invoice_number": "FABR-9045",
+    "invoice_date": "2026-03-11",
+    "received_date": "2026-03-16",
+    "due_date": "2026-04-10",
+    "currency": "USD",
+    "subtotal": 1401.89,
+    "tax_amount": 115.66,
+    "total_amount": 1517.55,
+    "po_number": "PO-7002",
+    "cost_center": "CC-102",
+    "status": "pending_approval",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Outbound freight",
+        "quantity": 2,
+        "unit_price": 222.62,
+        "amount": 445.24
+      },
+      {
+        "description": "Warehouse handling",
+        "quantity": 12,
+        "unit_price": 79.72,
+        "amount": 956.65
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1045.txt",
+    "extraction_confidence": 0.922,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1046",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9046",
+    "invoice_date": "2026-02-15",
+    "received_date": "2026-02-17",
+    "due_date": "2026-04-01",
+    "currency": "USD",
+    "subtotal": 45933.94,
+    "tax_amount": 3789.55,
+    "total_amount": 49723.49,
+    "po_number": "PO-7009",
+    "cost_center": "CC-109",
+    "status": "blocked",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_AMOUNT_MISMATCH",
+        "severity": "high",
+        "message": "Invoice total exceeds the remaining purchase order balance."
+      },
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Managed detection & response",
+        "quantity": 4,
+        "unit_price": 3689.24,
+        "amount": 14756.95
+      },
+      {
+        "description": "Cloud consumption",
+        "quantity": 12,
+        "unit_price": 1110.53,
+        "amount": 13326.36
+      },
+      {
+        "description": "Data platform support",
+        "quantity": 12,
+        "unit_price": 1487.55,
+        "amount": 17850.63
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1046.txt",
+    "extraction_confidence": 0.758,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1047",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "invoice_number": "WOOD-9047",
+    "invoice_date": "2026-03-23",
+    "received_date": "2026-03-26",
+    "due_date": "2026-04-22",
+    "currency": "USD",
+    "subtotal": 44572.98,
+    "tax_amount": 3677.02,
+    "total_amount": 48250.0,
+    "po_number": "PO-7001",
+    "cost_center": "CC-108",
+    "status": "blocked",
+    "approver": "d.chen@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "PO_AMOUNT_MISMATCH",
+        "severity": "high",
+        "message": "Invoice total exceeds the remaining purchase order balance."
+      },
+      {
+        "code": "DUPLICATE_SUSPECTED",
+        "severity": "high",
+        "message": "Potential duplicate of a previously submitted invoice."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "HVAC maintenance",
+        "quantity": 10,
+        "unit_price": 1123.8,
+        "amount": 11238.04
+      },
+      {
+        "description": "Janitorial services",
+        "quantity": 1,
+        "unit_price": 17362.26,
+        "amount": 17362.26
+      },
+      {
+        "description": "Security services",
+        "quantity": 10,
+        "unit_price": 1597.27,
+        "amount": 15972.68
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1047.txt",
+    "extraction_confidence": 0.861,
+    "erp_document_id": null,
+    "duplicate_of": "INV-1031"
+  },
+  {
+    "invoice_id": "INV-1048",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "invoice_number": "WOOD-9048",
+    "invoice_date": "2026-03-11",
+    "received_date": "2026-03-16",
+    "due_date": "2026-04-10",
+    "currency": "USD",
+    "subtotal": 6300.95,
+    "tax_amount": 519.83,
+    "total_amount": 6820.78,
+    "po_number": "PO-7008",
+    "cost_center": "CC-108",
+    "status": "pending_approval",
+    "approver": "j.rivera@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Tax compliance",
+        "quantity": 5,
+        "unit_price": 803.97,
+        "amount": 4019.83
+      },
+      {
+        "description": "Advisory hours",
+        "quantity": 5,
+        "unit_price": 456.22,
+        "amount": 2281.12
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1048.txt",
+    "extraction_confidence": 0.938,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1049",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "invoice_number": "FABR-9049",
+    "invoice_date": "2026-03-25",
+    "received_date": "2026-03-28",
+    "due_date": "2026-04-24",
+    "currency": "USD",
+    "subtotal": 1617.34,
+    "tax_amount": 133.43,
+    "total_amount": 1750.77,
+    "po_number": "PO-7026",
+    "cost_center": "CC-102",
+    "status": "extracted",
+    "approver": "s.okafor@contoso.com",
+    "approval_history": [],
+    "exceptions": [],
+    "line_items": [
+      {
+        "description": "Inbound freight",
+        "quantity": 10,
+        "unit_price": 61.79,
+        "amount": 617.85
+      },
+      {
+        "description": "Customs brokerage",
+        "quantity": 2,
+        "unit_price": 499.75,
+        "amount": 999.49
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1049.txt",
+    "extraction_confidence": 0.831,
+    "erp_document_id": null
+  },
+  {
+    "invoice_id": "INV-1050",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "invoice_number": "RELE-9050",
+    "invoice_date": "2026-03-12",
+    "received_date": "2026-03-15",
+    "due_date": "2026-04-26",
+    "currency": "USD",
+    "subtotal": 2235.44,
+    "tax_amount": 184.42,
+    "total_amount": 2419.86,
+    "po_number": "PO-7009",
+    "cost_center": "CC-109",
+    "status": "extracted",
+    "approver": "m.laurent@contoso.com",
+    "approval_history": [],
+    "exceptions": [
+      {
+        "code": "LOW_CONFIDENCE_EXTRACTION",
+        "severity": "medium",
+        "message": "Document extraction confidence is below the straight-through threshold."
+      }
+    ],
+    "line_items": [
+      {
+        "description": "Cloud consumption",
+        "quantity": 5,
+        "unit_price": 225.11,
+        "amount": 1125.56
+      },
+      {
+        "description": "Managed detection & response",
+        "quantity": 4,
+        "unit_price": 277.47,
+        "amount": 1109.88
+      }
+    ],
+    "source_document": "sample-data/invoices/documents/INV-1050.txt",
+    "extraction_confidence": 0.759,
+    "erp_document_id": null
+  }
+]

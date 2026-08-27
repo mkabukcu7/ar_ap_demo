@@ -1,0 +1,13 @@
+First Up Consultants
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4019
+Payment Date     : 2026-02-20
+Payment Method   : ACH
+Payment Reference: ACH-600247
+Payment Amount   : 35,411.84 USD
+
+Invoices Referenced
+  ARI-3019        35,411.84
+
+Questions regarding this payment should be directed to accounts payable.

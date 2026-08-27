@@ -1,0 +1,13 @@
+Bellows College
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4017
+Payment Date     : 2026-03-17
+Payment Method   : Check
+Payment Reference: ACH-600221
+Payment Amount   : 14,640.28 USD
+
+Invoices Referenced
+  ARI-3009        14,640.28
+
+Questions regarding this payment should be directed to accounts payable.

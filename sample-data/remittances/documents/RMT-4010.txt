@@ -1,0 +1,13 @@
+Coho Vineyard
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4010
+Payment Date     : 2026-03-09
+Payment Method   : ACH
+Payment Reference: ACH-600130
+Payment Amount   : 2,158.11 USD
+
+Invoices Referenced
+  ARI-3002         2,158.11
+
+Questions regarding this payment should be directed to accounts payable.

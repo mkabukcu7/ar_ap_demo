@@ -1,0 +1,13 @@
+Margie's Travel
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4004
+Payment Date     : 2026-03-06
+Payment Method   : Wire
+Payment Reference: ACH-600052
+Payment Amount   : 142,495.80 USD
+
+Invoices Referenced
+  (no invoice references supplied on the remittance advice)
+
+Questions regarding this payment should be directed to accounts payable.

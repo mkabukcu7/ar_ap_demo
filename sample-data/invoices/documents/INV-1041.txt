@@ -1,0 +1,18 @@
+Adventure Works Supply
+INVOICE
+
+Invoice Number : ADVE-9041
+Invoice ID     : INV-1041
+Invoice Date   : 2026-02-05
+Due Date       : 2026-04-06
+Purchase Order : PO-7028
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Lab consumables                     4 x   4,485.65 =    17,942.60
+
+Subtotal       : 17,942.60 USD
+Tax            : 1,480.26 USD
+Total Due      : 19,422.86 USD
+
+Remit payment per the terms agreed in the master services agreement.

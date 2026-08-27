@@ -1,0 +1,13 @@
+Bellows College
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4025
+Payment Date     : 2026-02-23
+Payment Method   : Wire
+Payment Reference: ACH-600325
+Payment Amount   : 5,134.17 USD
+
+Invoices Referenced
+  (no invoice references supplied on the remittance advice)
+
+Questions regarding this payment should be directed to accounts payable.

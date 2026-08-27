@@ -1,0 +1,45 @@
+# ============================================================
+# Azure AI Foundry — Service Connections
+# ============================================================
+# All connections use managed identity (no keys stored here).
+# Substitute <<PLACEHOLDER>> values with outputs from
+# 'az deployment group show' after running main.bicep.
+# ============================================================
+
+connections:
+
+  azure-ai-search:
+    type: CognitiveSearch
+    name: azure-ai-search
+    target: "https://<<SEARCH_SERVICE_NAME>>.search.windows.net"
+    auth_type: managed_identity
+    is_shared: true
+    metadata:
+      description: Azure AI Search for finance knowledge RAG
+
+  azure-storage:
+    type: AzureBlob
+    name: azure-storage
+    target: "https://<<STORAGE_ACCOUNT_NAME>>.blob.core.windows.net"
+    auth_type: managed_identity
+    is_shared: true
+    metadata:
+      description: Azure Blob Storage for invoices, remittances, and knowledge documents
+
+  app-insights:
+    type: AppInsights
+    name: app-insights
+    target: "<<APPLICATIONINSIGHTS_CONNECTION_STRING>>"
+    auth_type: managed_identity
+    is_shared: true
+    metadata:
+      description: Application Insights for agent telemetry and tracing
+
+  document-intelligence:
+    type: CognitiveService
+    name: document-intelligence
+    target: "https://<<DOCUMENT_INTELLIGENCE_NAME>>.cognitiveservices.azure.com/"
+    auth_type: managed_identity
+    is_shared: true
+    metadata:
+      description: Azure AI Document Intelligence for invoice and remittance extraction

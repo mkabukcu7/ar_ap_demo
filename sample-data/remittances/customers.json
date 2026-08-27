@@ -1,0 +1,74 @@
+[
+  {
+    "customer_id": "CUST-5001",
+    "name": "Alpine Ski House",
+    "segment": "Retail",
+    "credit_risk": "low",
+    "payment_terms": "NET45",
+    "credit_limit": 275000,
+    "collector": "s.okafor@contoso.com"
+  },
+  {
+    "customer_id": "CUST-5002",
+    "name": "Bellows College",
+    "segment": "Education",
+    "credit_risk": "low",
+    "payment_terms": "NET60",
+    "credit_limit": 300000,
+    "collector": "m.laurent@contoso.com"
+  },
+  {
+    "customer_id": "CUST-5003",
+    "name": "Coho Vineyard",
+    "segment": "Hospitality",
+    "credit_risk": "medium",
+    "payment_terms": "NET30",
+    "credit_limit": 325000,
+    "collector": "d.chen@contoso.com"
+  },
+  {
+    "customer_id": "CUST-5004",
+    "name": "First Up Consultants",
+    "segment": "Services",
+    "credit_risk": "medium",
+    "payment_terms": "NET45",
+    "credit_limit": 350000,
+    "collector": "j.rivera@contoso.com"
+  },
+  {
+    "customer_id": "CUST-5005",
+    "name": "Margie's Travel",
+    "segment": "Travel",
+    "credit_risk": "high",
+    "payment_terms": "NET60",
+    "credit_limit": 375000,
+    "collector": "s.okafor@contoso.com"
+  },
+  {
+    "customer_id": "CUST-5006",
+    "name": "Nod Publishers",
+    "segment": "Media",
+    "credit_risk": "low",
+    "payment_terms": "NET30",
+    "credit_limit": 400000,
+    "collector": "m.laurent@contoso.com"
+  },
+  {
+    "customer_id": "CUST-5007",
+    "name": "Trey Research",
+    "segment": "Life Sciences",
+    "credit_risk": "medium",
+    "payment_terms": "NET45",
+    "credit_limit": 425000,
+    "collector": "d.chen@contoso.com"
+  },
+  {
+    "customer_id": "CUST-5008",
+    "name": "Fourth Coffee",
+    "segment": "Retail",
+    "credit_risk": "high",
+    "payment_terms": "NET60",
+    "credit_limit": 450000,
+    "collector": "j.rivera@contoso.com"
+  }
+]

@@ -1,0 +1,105 @@
+{
+  "name": "finance-knowledge-skillset",
+  "description": "Splits finance documents into chunks and generates embeddings via Azure OpenAI text-embedding-3-large.",
+  "skills": [
+    {
+      "@odata.type": "#Microsoft.Skills.Text.SplitSkill",
+      "name": "split-skill",
+      "description": "Split document content into overlapping chunks for embedding.",
+      "context": "/document",
+      "textSplitMode": "pages",
+      "maximumPageLength": 2000,
+      "pageOverlapLength": 200,
+      "maximumPagesToTake": 0,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/content"
+        },
+        {
+          "name": "languageCode",
+          "source": "/document/language"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "textItems",
+          "targetName": "pages"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Text.AzureOpenAIEmbeddingSkill",
+      "name": "embedding-skill",
+      "description": "Generate text embeddings using Azure OpenAI text-embedding-3-large.",
+      "context": "/document/pages/*",
+      "resourceUri": "https://<<AI_SERVICES_NAME>>.openai.azure.com",
+      "deploymentId": "text-embedding-3-large",
+      "modelName": "text-embedding-3-large",
+      "dimensions": 3072,
+      "authIdentity": null,
+      "inputs": [
+        {
+          "name": "text",
+          "source": "/document/pages/*"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "embedding",
+          "targetName": "content_vector"
+        }
+      ]
+    },
+    {
+      "@odata.type": "#Microsoft.Skills.Util.DocumentExtractionSkill",
+      "name": "doc-extraction-skill",
+      "description": "Extract text and layout from PDF and Office documents.",
+      "context": "/document",
+      "parsingMode": "default",
+      "dataToExtract": "contentAndMetadata",
+      "configuration": {
+        "imageAction": "none"
+      },
+      "inputs": [
+        {
+          "name": "file_data",
+          "source": "/document/file_data"
+        }
+      ],
+      "outputs": [
+        {
+          "name": "content",
+          "targetName": "content"
+        },
+        {
+          "name": "normalized_images",
+          "targetName": "normalized_images"
+        }
+      ]
+    }
+  ],
+  "indexProjections": {
+    "selectors": [
+      {
+        "targetIndexName": "finance-knowledge",
+        "parentKeyFieldName": "id",
+        "sourceContext": "/document/pages/*",
+        "mappings": [
+          { "name": "content",        "source": "/document/pages/*" },
+          { "name": "content_vector", "source": "/document/pages/*/content_vector" },
+          { "name": "title",          "source": "/document/metadata_storage_name" },
+          { "name": "source",         "source": "/document/metadata_storage_path" },
+          { "name": "last_updated",   "source": "/document/metadata_storage_last_modified" }
+        ]
+      }
+    ],
+    "parameters": {
+      "projectionMode": "generatedKeyAsId"
+    }
+  },
+  "cognitiveServices": {
+    "@odata.type": "#Microsoft.Azure.Search.DefaultCognitiveServices",
+    "description": "Use the AI Services account attached to the search service."
+  }
+}

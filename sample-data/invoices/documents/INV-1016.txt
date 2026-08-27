@@ -1,0 +1,18 @@
+Proseware Marketing
+INVOICE
+
+Invoice Number : PROS-9016
+Invoice ID     : INV-1016
+Invoice Date   : 2026-02-17
+Due Date       : 2026-04-03
+Purchase Order : PO-7018
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Campaign production                10 x     172.37 =     1,723.67
+
+Subtotal       : 1,723.67 USD
+Tax            : 142.20 USD
+Total Due      : 1,865.87 USD
+
+Remit payment per the terms agreed in the master services agreement.

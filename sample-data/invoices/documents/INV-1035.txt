@@ -1,0 +1,18 @@
+Litware Professional Services
+INVOICE
+
+Invoice Number : LITW-9035
+Invoice ID     : INV-1035
+Invoice Date   : 2026-02-16
+Due Date       : 2026-04-02
+Purchase Order : PO-7039
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Advisory hours                      4 x     249.81 =       999.25
+
+Subtotal       : 999.25 USD
+Tax            : 82.44 USD
+Total Due      : 1,081.69 USD
+
+Remit payment per the terms agreed in the master services agreement.

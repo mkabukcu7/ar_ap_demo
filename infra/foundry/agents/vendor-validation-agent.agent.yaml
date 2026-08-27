@@ -1,0 +1,42 @@
+# ============================================================
+# Agent: Vendor Validation Agent
+# Role: Validates vendor master data against internal records,
+#       tax authority databases, and sanction / risk lists.
+# ============================================================
+
+name: vendor-validation-agent
+display_name: Vendor Validation Agent
+description: >
+  Specialist agent that validates vendor information before invoice
+  approval. Checks vendor registration status, tax ID (EIN/VAT),
+  bank account details, duplicate vendor detection, OFAC/sanction
+  screening flags, and alignment with the approved vendor master list.
+
+model: gpt-5.4
+model_parameters:
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 2048
+
+instructions_file: src/prompts/vendor-validation-agent.md
+
+# -------- Function Tools --------
+tools:
+  - type: function
+    function:
+      name: validate_vendor
+      description: >
+        Validate a vendor record: check active status, tax ID validity,
+        banking details, sanction flags, and duplicate vendor risk.
+
+  - type: function
+    function:
+      name: search_invoices
+      description: >
+        Search historical invoices for a vendor to assess payment patterns
+        and identify anomalies.
+
+# -------- Metadata --------
+tags:
+  role: specialist
+  domain: vendor-management

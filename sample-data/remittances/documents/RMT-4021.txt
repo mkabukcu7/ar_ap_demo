@@ -1,0 +1,13 @@
+Nod Publishers
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4021
+Payment Date     : 2026-03-29
+Payment Method   : Check
+Payment Reference: ACH-600273
+Payment Amount   : 22,893.14 USD
+
+Invoices Referenced
+  ARI-3029        22,893.14
+
+Questions regarding this payment should be directed to accounts payable.

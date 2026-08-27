@@ -1,0 +1,18 @@
+Wide World Importers
+INVOICE
+
+Invoice Number : WIDE-9015
+Invoice ID     : INV-1015
+Invoice Date   : 2026-02-28
+Due Date       : 2026-04-29
+Purchase Order : NOT PROVIDED
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Safety equipment                    5 x     178.19 =       890.93
+
+Subtotal       : 890.93 USD
+Tax            : 73.50 USD
+Total Due      : 964.43 USD
+
+Remit payment per the terms agreed in the master services agreement.

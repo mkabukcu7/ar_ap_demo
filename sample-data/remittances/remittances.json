@@ -1,0 +1,616 @@
+[
+  {
+    "remittance_id": "RMT-4001",
+    "customer_id": "CUST-5002",
+    "customer_name": "Bellows College",
+    "payment_date": "2026-03-28",
+    "payment_reference": "ACH-600013",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 10285.49,
+    "applied_amount": 10285.49,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3001",
+        "customer_id": "CUST-5002",
+        "applied_amount": 10285.49,
+        "confidence": 0.94
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4001.txt"
+  },
+  {
+    "remittance_id": "RMT-4002",
+    "customer_id": "CUST-5003",
+    "customer_name": "Coho Vineyard",
+    "payment_date": "2026-03-14",
+    "payment_reference": "ACH-600026",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 11090.72,
+    "applied_amount": 11090.72,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3002",
+        "customer_id": "CUST-5003",
+        "applied_amount": 11090.72,
+        "confidence": 0.9
+      }
+    ],
+    "exceptions": [
+      {
+        "code": "DEDUCTION_TAKEN",
+        "severity": "medium",
+        "message": "Customer deducted an unauthorised discount or claim."
+      }
+    ],
+    "source_document": "sample-data/remittances/documents/RMT-4002.txt"
+  },
+  {
+    "remittance_id": "RMT-4003",
+    "customer_id": "CUST-5004",
+    "customer_name": "First Up Consultants",
+    "payment_date": "2026-03-30",
+    "payment_reference": "ACH-600039",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 78159.41,
+    "applied_amount": 76759.41,
+    "unapplied_amount": 1400.0,
+    "status": "partially_applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3003",
+        "customer_id": "CUST-5004",
+        "applied_amount": 65095.79,
+        "confidence": 0.97
+      },
+      {
+        "ar_invoice_id": "ARI-3011",
+        "customer_id": "CUST-5004",
+        "applied_amount": 11663.62,
+        "confidence": 0.97
+      }
+    ],
+    "exceptions": [
+      {
+        "code": "OVERPAYMENT",
+        "severity": "low",
+        "message": "Payment received exceeds the referenced invoice balance."
+      }
+    ],
+    "source_document": "sample-data/remittances/documents/RMT-4003.txt"
+  },
+  {
+    "remittance_id": "RMT-4004",
+    "customer_id": "CUST-5005",
+    "customer_name": "Margie's Travel",
+    "payment_date": "2026-03-06",
+    "payment_reference": "ACH-600052",
+    "payment_method": "Wire",
+    "currency": "USD",
+    "payment_amount": 142495.8,
+    "applied_amount": 0.0,
+    "unapplied_amount": 142495.8,
+    "status": "unapplied",
+    "matches": [],
+    "exceptions": [
+      {
+        "code": "NO_REMITTANCE_REFERENCE",
+        "severity": "high",
+        "message": "Remittance advice contains no usable invoice reference."
+      }
+    ],
+    "source_document": "sample-data/remittances/documents/RMT-4004.txt"
+  },
+  {
+    "remittance_id": "RMT-4005",
+    "customer_id": "CUST-5006",
+    "customer_name": "Nod Publishers",
+    "payment_date": "2026-03-24",
+    "payment_reference": "ACH-600065",
+    "payment_method": "Wire",
+    "currency": "USD",
+    "payment_amount": 19697.4,
+    "applied_amount": 15897.4,
+    "unapplied_amount": 3800.0,
+    "status": "partially_applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3005",
+        "customer_id": "CUST-5006",
+        "applied_amount": 5042.81,
+        "confidence": 0.97
+      },
+      {
+        "ar_invoice_id": "ARI-3013",
+        "customer_id": "CUST-5006",
+        "applied_amount": 10854.59,
+        "confidence": 0.97
+      }
+    ],
+    "exceptions": [
+      {
+        "code": "OVERPAYMENT",
+        "severity": "low",
+        "message": "Payment received exceeds the referenced invoice balance."
+      }
+    ],
+    "source_document": "sample-data/remittances/documents/RMT-4005.txt"
+  },
+  {
+    "remittance_id": "RMT-4006",
+    "customer_id": "CUST-5007",
+    "customer_name": "Trey Research",
+    "payment_date": "2026-02-18",
+    "payment_reference": "ACH-600078",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 6344.47,
+    "applied_amount": 6344.47,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3006",
+        "customer_id": "CUST-5007",
+        "applied_amount": 6344.47,
+        "confidence": 0.94
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4006.txt"
+  },
+  {
+    "remittance_id": "RMT-4007",
+    "customer_id": "CUST-5008",
+    "customer_name": "Fourth Coffee",
+    "payment_date": "2026-02-16",
+    "payment_reference": "ACH-600091",
+    "payment_method": "Wire",
+    "currency": "USD",
+    "payment_amount": 14637.52,
+    "applied_amount": 14637.52,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3007",
+        "customer_id": "CUST-5008",
+        "applied_amount": 14637.52,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4007.txt"
+  },
+  {
+    "remittance_id": "RMT-4008",
+    "customer_id": "CUST-5001",
+    "customer_name": "Alpine Ski House",
+    "payment_date": "2026-02-24",
+    "payment_reference": "ACH-600104",
+    "payment_method": "Wire",
+    "currency": "USD",
+    "payment_amount": 45156.47,
+    "applied_amount": 45156.47,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3008",
+        "customer_id": "CUST-5001",
+        "applied_amount": 45156.47,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4008.txt"
+  },
+  {
+    "remittance_id": "RMT-4009",
+    "customer_id": "CUST-5002",
+    "customer_name": "Bellows College",
+    "payment_date": "2026-03-06",
+    "payment_reference": "ACH-600117",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 9732.95,
+    "applied_amount": 9732.95,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3001",
+        "customer_id": "CUST-5002",
+        "applied_amount": 9732.95,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4009.txt"
+  },
+  {
+    "remittance_id": "RMT-4010",
+    "customer_id": "CUST-5003",
+    "customer_name": "Coho Vineyard",
+    "payment_date": "2026-03-09",
+    "payment_reference": "ACH-600130",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 2158.11,
+    "applied_amount": 2158.11,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3002",
+        "customer_id": "CUST-5003",
+        "applied_amount": 2158.11,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4010.txt"
+  },
+  {
+    "remittance_id": "RMT-4011",
+    "customer_id": "CUST-5004",
+    "customer_name": "First Up Consultants",
+    "payment_date": "2026-03-14",
+    "payment_reference": "ACH-600143",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 9408.78,
+    "applied_amount": 0.0,
+    "unapplied_amount": 9408.78,
+    "status": "unapplied",
+    "matches": [],
+    "exceptions": [
+      {
+        "code": "INVOICE_NOT_FOUND",
+        "severity": "high",
+        "message": "Referenced invoice number does not exist in the AR sub-ledger."
+      }
+    ],
+    "source_document": "sample-data/remittances/documents/RMT-4011.txt"
+  },
+  {
+    "remittance_id": "RMT-4012",
+    "customer_id": "CUST-5005",
+    "customer_name": "Margie's Travel",
+    "payment_date": "2026-02-23",
+    "payment_reference": "ACH-600156",
+    "payment_method": "Wire",
+    "currency": "USD",
+    "payment_amount": 27454.47,
+    "applied_amount": 27454.47,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3004",
+        "customer_id": "CUST-5005",
+        "applied_amount": 27454.47,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4012.txt"
+  },
+  {
+    "remittance_id": "RMT-4013",
+    "customer_id": "CUST-5006",
+    "customer_name": "Nod Publishers",
+    "payment_date": "2026-03-12",
+    "payment_reference": "ACH-600169",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 36291.61,
+    "applied_amount": 36291.61,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3021",
+        "customer_id": "CUST-5006",
+        "applied_amount": 36291.61,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4013.txt"
+  },
+  {
+    "remittance_id": "RMT-4014",
+    "customer_id": "CUST-5007",
+    "customer_name": "Trey Research",
+    "payment_date": "2026-03-06",
+    "payment_reference": "ACH-600182",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 24057.66,
+    "applied_amount": 20257.66,
+    "unapplied_amount": 3800.0,
+    "status": "partially_applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3006",
+        "customer_id": "CUST-5007",
+        "applied_amount": 5565.4,
+        "confidence": 0.97
+      },
+      {
+        "ar_invoice_id": "ARI-3014",
+        "customer_id": "CUST-5007",
+        "applied_amount": 14692.26,
+        "confidence": 0.97
+      }
+    ],
+    "exceptions": [
+      {
+        "code": "OVERPAYMENT",
+        "severity": "low",
+        "message": "Payment received exceeds the referenced invoice balance."
+      }
+    ],
+    "source_document": "sample-data/remittances/documents/RMT-4014.txt"
+  },
+  {
+    "remittance_id": "RMT-4015",
+    "customer_id": "CUST-5008",
+    "customer_name": "Fourth Coffee",
+    "payment_date": "2026-03-18",
+    "payment_reference": "ACH-600195",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 47704.48,
+    "applied_amount": 47704.48,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3015",
+        "customer_id": "CUST-5008",
+        "applied_amount": 47704.48,
+        "confidence": 0.94
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4015.txt"
+  },
+  {
+    "remittance_id": "RMT-4016",
+    "customer_id": "CUST-5001",
+    "customer_name": "Alpine Ski House",
+    "payment_date": "2026-03-18",
+    "payment_reference": "ACH-600208",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 8091.23,
+    "applied_amount": 8091.23,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3016",
+        "customer_id": "CUST-5001",
+        "applied_amount": 8091.23,
+        "confidence": 0.94
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4016.txt"
+  },
+  {
+    "remittance_id": "RMT-4017",
+    "customer_id": "CUST-5002",
+    "customer_name": "Bellows College",
+    "payment_date": "2026-03-17",
+    "payment_reference": "ACH-600221",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 14640.28,
+    "applied_amount": 14640.28,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3009",
+        "customer_id": "CUST-5002",
+        "applied_amount": 14640.28,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4017.txt"
+  },
+  {
+    "remittance_id": "RMT-4018",
+    "customer_id": "CUST-5003",
+    "customer_name": "Coho Vineyard",
+    "payment_date": "2026-03-08",
+    "payment_reference": "ACH-600234",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 13719.8,
+    "applied_amount": 13719.8,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3010",
+        "customer_id": "CUST-5003",
+        "applied_amount": 13719.8,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4018.txt"
+  },
+  {
+    "remittance_id": "RMT-4019",
+    "customer_id": "CUST-5004",
+    "customer_name": "First Up Consultants",
+    "payment_date": "2026-02-20",
+    "payment_reference": "ACH-600247",
+    "payment_method": "ACH",
+    "currency": "USD",
+    "payment_amount": 35411.84,
+    "applied_amount": 35411.84,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3019",
+        "customer_id": "CUST-5004",
+        "applied_amount": 35411.84,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4019.txt"
+  },
+  {
+    "remittance_id": "RMT-4020",
+    "customer_id": "CUST-5005",
+    "customer_name": "Margie's Travel",
+    "payment_date": "2026-03-07",
+    "payment_reference": "ACH-600260",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 12432.27,
+    "applied_amount": 12432.27,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3012",
+        "customer_id": "CUST-5005",
+        "applied_amount": 12432.27,
+        "confidence": 0.94
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4020.txt"
+  },
+  {
+    "remittance_id": "RMT-4021",
+    "customer_id": "CUST-5006",
+    "customer_name": "Nod Publishers",
+    "payment_date": "2026-03-29",
+    "payment_reference": "ACH-600273",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 22893.14,
+    "applied_amount": 22893.14,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3029",
+        "customer_id": "CUST-5006",
+        "applied_amount": 22893.14,
+        "confidence": 0.94
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4021.txt"
+  },
+  {
+    "remittance_id": "RMT-4022",
+    "customer_id": "CUST-5007",
+    "customer_name": "Trey Research",
+    "payment_date": "2026-02-17",
+    "payment_reference": "ACH-600286",
+    "payment_method": "Wire",
+    "currency": "USD",
+    "payment_amount": 19579.01,
+    "applied_amount": 19579.01,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3022",
+        "customer_id": "CUST-5007",
+        "applied_amount": 19579.01,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4022.txt"
+  },
+  {
+    "remittance_id": "RMT-4023",
+    "customer_id": "CUST-5008",
+    "customer_name": "Fourth Coffee",
+    "payment_date": "2026-02-26",
+    "payment_reference": "ACH-600299",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 26202.85,
+    "applied_amount": 26202.85,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3015",
+        "customer_id": "CUST-5008",
+        "applied_amount": 26202.85,
+        "confidence": 0.99
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4023.txt"
+  },
+  {
+    "remittance_id": "RMT-4024",
+    "customer_id": "CUST-5001",
+    "customer_name": "Alpine Ski House",
+    "payment_date": "2026-02-27",
+    "payment_reference": "ACH-600312",
+    "payment_method": "Check",
+    "currency": "USD",
+    "payment_amount": 3095.38,
+    "applied_amount": 3095.38,
+    "unapplied_amount": 0.0,
+    "status": "applied",
+    "matches": [
+      {
+        "ar_invoice_id": "ARI-3016",
+        "customer_id": "CUST-5001",
+        "applied_amount": 3095.38,
+        "confidence": 0.94
+      }
+    ],
+    "exceptions": [],
+    "source_document": "sample-data/remittances/documents/RMT-4024.txt"
+  },
+  {
+    "remittance_id": "RMT-4025",
+    "customer_id": "CUST-5002",
+    "customer_name": "Bellows College",
+    "payment_date": "2026-02-23",
+    "payment_reference": "ACH-600325",
+    "payment_method": "Wire",
+    "currency": "USD",
+    "payment_amount": 5134.17,
+    "applied_amount": 0.0,
+    "unapplied_amount": 5134.17,
+    "status": "unapplied",
+    "matches": [],
+    "exceptions": [
+      {
+        "code": "INVOICE_NOT_FOUND",
+        "severity": "high",
+        "message": "Referenced invoice number does not exist in the AR sub-ledger."
+      }
+    ],
+    "source_document": "sample-data/remittances/documents/RMT-4025.txt"
+  }
+]

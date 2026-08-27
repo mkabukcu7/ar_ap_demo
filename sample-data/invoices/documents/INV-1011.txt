@@ -1,0 +1,20 @@
+Lamna Healthcare Staffing
+INVOICE
+
+Invoice Number : LAMN-9011
+Invoice ID     : INV-1011
+Invoice Date   : 2026-03-12
+Due Date       : 2026-04-11
+Purchase Order : PO-7023
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Onboarding services                 2 x   2,388.14 =     4,776.27
+  Temporary staffing                 12 x     189.50 =     2,274.02
+  Recruiting fees                     2 x     962.75 =     1,925.49
+
+Subtotal       : 8,975.78 USD
+Tax            : 740.50 USD
+Total Due      : 9,716.28 USD
+
+Remit payment per the terms agreed in the master services agreement.

@@ -1,0 +1,47 @@
+# ============================================================
+# Agent: Finance Policy Agent
+# Role: Retrieval-augmented Q&A over the finance knowledge base
+#       covering internal policies, SOX controls, approval
+#       thresholds, and accounting standards.
+# ============================================================
+
+name: finance-policy-agent
+display_name: Finance Policy Agent
+description: >
+  Specialist agent for finance policy and compliance queries. Uses
+  Azure AI Search (RAG) over the indexed finance knowledge base to
+  answer questions about internal policies, approval authority matrices,
+  journal entry procedures, SOX controls, and GAAP/IFRS guidance.
+  Always cites the source document and section.
+
+model: gpt-5.4
+model_parameters:
+  temperature: 0.2
+  top_p: 0.95
+  max_tokens: 4096
+
+instructions_file: src/prompts/policy-agent.md
+
+# -------- Function Tools --------
+tools:
+  - type: function
+    function:
+      name: search_finance_knowledge
+      description: >
+        Semantic + keyword search over the Azure AI Search finance knowledge index.
+        Returns ranked document chunks with citations for policy Q&A.
+
+# -------- Azure AI Search Tool (built-in RAG tool) --------
+  - type: azure_ai_search
+    azure_ai_search:
+      connection_name: azure-ai-search
+      index_name: finance-knowledge
+      query_type: semantic
+      semantic_configuration: finance-semantic-config
+      top_k: 5
+      in_context: true
+
+# -------- Metadata --------
+tags:
+  role: specialist
+  domain: finance-policy

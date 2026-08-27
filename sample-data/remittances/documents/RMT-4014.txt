@@ -1,0 +1,14 @@
+Trey Research
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4014
+Payment Date     : 2026-03-06
+Payment Method   : Check
+Payment Reference: ACH-600182
+Payment Amount   : 24,057.66 USD
+
+Invoices Referenced
+  ARI-3006         5,565.40
+  ARI-3014        14,692.26
+
+Questions regarding this payment should be directed to accounts payable.

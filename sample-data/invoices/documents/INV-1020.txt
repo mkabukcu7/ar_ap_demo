@@ -1,0 +1,18 @@
+Fabrikam Logistics
+INVOICE
+
+Invoice Number : FABR-9020
+Invoice ID     : INV-1020
+Invoice Date   : 2026-03-01
+Due Date       : 2026-03-31
+Purchase Order : PO-7026
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Customs brokerage                   1 x   3,955.52 =     3,955.52
+
+Subtotal       : 3,955.52 USD
+Tax            : 326.33 USD
+Total Due      : 4,281.85 USD
+
+Remit payment per the terms agreed in the master services agreement.

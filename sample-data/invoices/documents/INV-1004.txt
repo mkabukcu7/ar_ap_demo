@@ -1,0 +1,18 @@
+Contoso Cloud Services
+INVOICE
+
+Invoice Number : CONT-9004
+Invoice ID     : INV-1004
+Invoice Date   : 2026-03-04
+Due Date       : 2026-05-03
+Purchase Order : PO-7037
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Cloud consumption                   2 x   1,094.10 =     2,188.19
+
+Subtotal       : 2,188.19 USD
+Tax            : 180.53 USD
+Total Due      : 2,368.72 USD
+
+Remit payment per the terms agreed in the master services agreement.

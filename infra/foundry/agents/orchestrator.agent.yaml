@@ -1,0 +1,57 @@
+# ============================================================
+# Agent: Finance Orchestrator
+# Role: Entry-point for all finance operations requests.
+#       Routes to child agents based on intent classification.
+# ============================================================
+
+name: finance-orchestrator
+display_name: Finance Orchestrator Agent
+description: >
+  Top-level orchestrator that receives user requests for AP, AR, and
+  finance policy queries. Classifies intent, delegates to the appropriate
+  specialist child agent, aggregates results, and returns a unified response.
+  Handles multi-step workflows spanning multiple agents.
+
+model: gpt-5.4
+model_parameters:
+  temperature: 0.1
+  top_p: 0.95
+  max_tokens: 4096
+
+instructions_file: src/prompts/orchestrator.md
+
+# -------- Connected (Child) Agents --------
+connected_agents:
+  - name: ap-agent
+    description: >
+      Handles all Accounts Payable tasks: invoice ingestion, duplicate detection,
+      PO matching, vendor validation, approval, and ERP posting.
+  - name: ar-agent
+    description: >
+      Handles all Accounts Receivable tasks: remittance matching, unapplied cash,
+      collections prioritization, and AR health summaries.
+  - name: finance-policy-agent
+    description: >
+      Answers questions about internal finance policies, SOX controls,
+      approval thresholds, and accounting standards using RAG over the
+      finance knowledge base.
+  - name: vendor-validation-agent
+    description: >
+      Validates vendor master data, tax IDs, banking details, and
+      checks vendor risk or sanction flags.
+  - name: exception-resolution-agent
+    description: >
+      Manages invoice and payment exceptions: triages, assigns, tracks,
+      and escalates unresolved exceptions.
+
+# -------- Function Tools (available directly to orchestrator) --------
+tools:
+  - type: function
+    function:
+      name: search_finance_knowledge
+      description: RAG search over the finance knowledge base for policy and procedure questions.
+
+# -------- Metadata --------
+tags:
+  role: orchestrator
+  domain: finance-operations

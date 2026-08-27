@@ -1,0 +1,58 @@
+# ============================================================
+# Agent: Exception Resolution Agent
+# Role: Triages, tracks, and resolves AP/AR exceptions
+#       that cannot be automatically processed.
+# ============================================================
+
+name: exception-resolution-agent
+display_name: Exception Resolution Agent
+description: >
+  Specialist agent for managing finance exceptions. Triages invoice
+  mismatches, unmatched remittances, vendor disputes, and approval
+  threshold breaches. Assigns exceptions to the appropriate owner,
+  suggests resolution actions, tracks SLA compliance, and escalates
+  overdue exceptions to controllers or shared-services managers.
+
+model: gpt-5.4
+model_parameters:
+  temperature: 0.1
+  top_p: 0.95
+  max_tokens: 4096
+
+instructions_file: src/prompts/exception-resolution-agent.md
+
+# -------- Function Tools --------
+tools:
+  - type: function
+    function:
+      name: list_exceptions
+      description: >
+        List open exceptions with filters for type (AP/AR), severity,
+        owner, age, and SLA breach status.
+
+  - type: function
+    function:
+      name: get_invoice
+      description: Retrieve invoice details for an exception under investigation.
+
+  - type: function
+    function:
+      name: match_invoice_to_po
+      description: Attempt re-matching of an invoice to a PO as part of exception resolution.
+
+  - type: function
+    function:
+      name: validate_vendor
+      description: Validate vendor details when a vendor dispute exception is raised.
+
+  - type: function
+    function:
+      name: search_finance_knowledge
+      description: >
+        Search finance policies for guidance on exception handling procedures
+        and approval authority.
+
+# -------- Metadata --------
+tags:
+  role: specialist
+  domain: exception-management
