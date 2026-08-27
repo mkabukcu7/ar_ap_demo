@@ -155,7 +155,10 @@ class FinanceOrchestratorAgent(BaseAgent):
             return self.exception_agent.summarize(severity=severity, domain=domain)
 
         if re.search(r"\bvendor\b|\bsupplier\b", lowered):
-            vendor_name = re.sub(r".*\b(vendor|supplier)\b", "", text, flags=re.IGNORECASE).strip(" ?.")
+            last_keyword = None
+            for last_keyword in re.finditer(r"\b(?:vendor|supplier)\b", text, flags=re.IGNORECASE):
+                pass
+            vendor_name = text[last_keyword.end() :].strip(" ?.") if last_keyword else ""
             return self.vendor_agent.validate(vendor_name=vendor_name or None)
 
         if re.search(r"\bdso\b|receivable|collection|customer payment|aging|ar health", lowered):
