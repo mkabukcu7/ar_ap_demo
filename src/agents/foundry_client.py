@@ -1,90 +1,79 @@
-"""Azure AI Foundry adapter.
+"""Invoke the deployed Microsoft Foundry finance orchestrator.
 
-`local` mode (the default) needs no Azure resources. When the accelerator is
-deployed, this module provisions the orchestrator and its connected child agents
-on the **Azure AI Agent Service** with the ``gpt-5.4`` deployment, registering
-the Python functions in :mod:`src.tools.registry` as function tools.
-
-Authentication is always Microsoft Entra ID via ``DefaultAzureCredential`` —
-no keys or connection secrets are read from code.
-
-Provision the agents with::
-
-    FINANCE_AGENT_MODE=foundry \\
-    AZURE_AI_PROJECT_ENDPOINT=https://<project>.services.ai.azure.com/api/projects/<name> \\
-    python -m src.agents.foundry_client
-
-The declarative equivalents of the definitions produced here are checked in at
-``infra/foundry/agents/*.agent.yaml``.
+Foundry performs the reasoning while this process executes the trusted finance
+functions requested by the Prompt Agent. Authentication uses Microsoft Entra ID
+through ``DefaultAzureCredential``.
 """
 
 from __future__ import annotations
 
 import json
-from typing import Any
+from functools import lru_cache
+from typing import Any, Protocol
 
-from src.agents.orchestrator import FinanceOrchestratorAgent
+from src.agents.base import AgentResponse, TraceStep, load_instructions
 from src.config import settings
 from src.tools.registry import TOOL_SCHEMAS, invoke_tool
+
+ORCHESTRATOR_NAME = "finance-orchestrator"
+MAX_TOOL_ROUNDS = 8
+WRITE_TOOLS = {"approve_invoice", "bulk_approve_invoices", "post_invoice_to_erp"}
+APPROVAL_TOOLS = {"approve_invoice", "bulk_approve_invoices"}
 
 
 class FoundryNotConfiguredError(RuntimeError):
     """Raised when Foundry mode is requested without the required configuration."""
 
 
-def build_agent_payloads(orchestrator: FinanceOrchestratorAgent | None = None) -> list[dict[str, Any]]:
-    """Return the create-agent payloads for the orchestrator and its child agents.
+class ResponsesClient(Protocol):
+    responses: Any
 
-    The payloads are plain dictionaries so they can be inspected, diffed and
-    tested without any Azure dependency.
-    """
 
-    orchestrator = orchestrator or FinanceOrchestratorAgent()
-    schema_by_name = {schema["function"]["name"]: schema for schema in TOOL_SCHEMAS}
+def build_prompt_agent_definition() -> dict[str, Any]:
+    """Build the deployed Prompt Agent definition from local prompts and tools."""
 
-    payloads: list[dict[str, Any]] = []
-    for agent in orchestrator.child_agents:
-        payloads.append(
+    tools = []
+    for schema in TOOL_SCHEMAS:
+        function = schema["function"]
+        tools.append(
             {
-                "name": agent.name,
-                "model": settings.model_deployment,
-                "description": agent.description,
-                "instructions": agent.instructions,
-                "tools": [schema_by_name[tool] for tool in agent.tools if tool in schema_by_name],
-                "temperature": 0.2,
-                "top_p": 0.9,
+                "type": "function",
+                "name": function["name"],
+                "description": function["description"],
+                "parameters": function["parameters"],
+                "strict": False,
             }
         )
-
-    payloads.append(
-        {
-            "name": orchestrator.name,
-            "model": settings.model_deployment,
-            "description": orchestrator.description,
-            "instructions": orchestrator.instructions,
-            "tools": [],
-            "connected_agents": [agent.name for agent in orchestrator.child_agents],
-            "temperature": 0.2,
-            "top_p": 0.9,
-        }
-    )
-    return payloads
+    return {
+        "kind": "prompt",
+        "model": settings.model_deployment,
+        "instructions": load_instructions("orchestrator.md"),
+        "tools": tools,
+    }
 
 
-def execute_tool_call(name: str, arguments: str | dict[str, Any]) -> str:
+def execute_tool_call(
+    name: str,
+    arguments: str | dict[str, Any],
+    *,
+    approver: str | None = None,
+) -> str:
     """Execute a Foundry tool call and return the JSON string the service expects."""
 
     parsed = json.loads(arguments) if isinstance(arguments, str) else dict(arguments)
+    if name in WRITE_TOOLS and not settings.enable_write_actions:
+        raise PermissionError("Write actions are disabled in this environment.")
+    if name in APPROVAL_TOOLS and approver:
+        parsed.setdefault("approver", approver)
     return json.dumps(invoke_tool(name, **parsed), default=str)
 
 
-def create_agents() -> list[str]:  # pragma: no cover - requires Azure resources
-    """Create or update the agents in the configured Azure AI Foundry project."""
-
+@lru_cache(maxsize=1)
+def get_foundry_client() -> ResponsesClient:  # pragma: no cover - requires Azure resources
+    """Create the OpenAI-compatible client for the deployed Prompt Agent."""
     if not settings.project_endpoint:
         raise FoundryNotConfiguredError(
-            "AZURE_AI_PROJECT_ENDPOINT is not set. Deploy infra/bicep/main.bicep and export the endpoint, "
-            "or keep FINANCE_AGENT_MODE=local to run the accelerator offline."
+            "AZURE_AI_PROJECT_ENDPOINT is required when FINANCE_AGENT_MODE=foundry."
         )
 
     try:
@@ -95,20 +84,78 @@ def create_agents() -> list[str]:  # pragma: no cover - requires Azure resources
             "Install the Azure extras first: pip install -r requirements-azure.txt"
         ) from error
 
-    client = AIProjectClient(endpoint=settings.project_endpoint, credential=DefaultAzureCredential())
-    created: list[str] = []
-    for payload in build_agent_payloads():
-        agent = client.agents.create_agent(
-            model=payload["model"],
-            name=payload["name"],
-            description=payload["description"],
-            instructions=payload["instructions"],
-            tools=payload["tools"],
+    project = AIProjectClient(endpoint=settings.project_endpoint, credential=DefaultAzureCredential())
+    return project.get_openai_client(agent_name=ORCHESTRATOR_NAME)
+
+
+def sync_foundry_agent() -> str:  # pragma: no cover - requires Azure resources
+    """Publish a new Prompt Agent version from the repository definition."""
+
+    if not settings.project_endpoint:
+        raise FoundryNotConfiguredError("AZURE_AI_PROJECT_ENDPOINT is required to sync the agent.")
+    try:
+        from azure.ai.projects import AIProjectClient
+        from azure.ai.projects.models import FunctionTool, PromptAgentDefinition
+        from azure.identity import DefaultAzureCredential
+    except ImportError as error:
+        raise FoundryNotConfiguredError(
+            "Install the Azure extras first: pip install -r requirements-azure.txt"
+        ) from error
+
+    payload = build_prompt_agent_definition()
+    definition = PromptAgentDefinition(
+        model=payload["model"],
+        instructions=payload["instructions"],
+        tools=[FunctionTool(**tool) for tool in payload["tools"]],
+    )
+    project = AIProjectClient(endpoint=settings.project_endpoint, credential=DefaultAzureCredential())
+    try:
+        version = project.agents.create_version(
+            ORCHESTRATOR_NAME,
+            definition=definition,
+            description="Finance orchestrator with trusted client-side tools.",
         )
-        created.append(agent.id)
-    return created
+        return version.id
+    finally:
+        project.close()
 
 
-if __name__ == "__main__":  # pragma: no cover - operational entry point
-    for agent_id in create_agents():
-        print(f"Created agent {agent_id}")
+def invoke_foundry_agent(
+    message: str,
+    *,
+    approver: str | None = None,
+    client: ResponsesClient | None = None,
+) -> AgentResponse:
+    """Run one Prompt Agent turn, satisfying any local function calls."""
+
+    openai_client = client or get_foundry_client()
+    response = openai_client.responses.create(input=message)
+    trace: list[TraceStep] = []
+    tool_data: list[Any] = []
+
+    for _ in range(MAX_TOOL_ROUNDS):
+        calls = [item for item in response.output if item.type == "function_call"]
+        if not calls:
+            if not response.output_text:
+                raise RuntimeError("The Foundry agent completed without a text response.")
+            data: Any = tool_data[-1] if len(tool_data) == 1 else tool_data or None
+            return AgentResponse(reply=response.output_text, data=data, trace=trace)
+
+        outputs: list[dict[str, str]] = []
+        for call in calls:
+            try:
+                result = execute_tool_call(call.name, call.arguments, approver=approver)
+                tool_data.append(json.loads(result))
+                summary = "Completed trusted local function call."
+            except (KeyError, TypeError, ValueError, PermissionError) as error:
+                result = json.dumps({"error": str(error)})
+                summary = f"Tool call failed: {error}"
+            trace.append(TraceStep(agent="Finance Orchestrator", tool=call.name, summary=summary))
+            outputs.append({"type": "function_call_output", "call_id": call.call_id, "output": result})
+
+        response = openai_client.responses.create(
+            input=outputs,
+            previous_response_id=response.id,
+        )
+
+    raise RuntimeError(f"The Foundry agent exceeded {MAX_TOOL_ROUNDS} tool-call rounds.")

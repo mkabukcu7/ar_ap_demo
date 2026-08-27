@@ -2,9 +2,12 @@
 
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 import pytest
 from fastapi.testclient import TestClient
 
+from src.agents.base import AgentResponse, TraceStep
 from src.agents.orchestrator import reset_orchestrator
 from src.api.main import app
 from src.data.store import reset_store
@@ -20,8 +23,15 @@ def client() -> TestClient:
 def test_health(client: TestClient) -> None:
     payload = client.get("/api/health").json()
     assert payload["status"] == "ok"
-    assert payload["mode"] in {"local", "foundry"}
+    assert payload["mode"] == "foundry"
     assert payload["invoice_count"] == 50
+
+
+def test_dashboard_is_served_without_vite(client: TestClient) -> None:
+    response = client.get("/")
+    assert response.status_code == 200
+    assert "Finance Operations Command Center" in response.text
+    assert "/api/metrics/ap" in response.text
 
 
 def test_metrics_endpoints(client: TestClient) -> None:
@@ -112,3 +122,42 @@ def test_chat_endpoint_returns_citations_and_trace(client: TestClient) -> None:
 
 def test_chat_rejects_empty_messages(client: TestClient) -> None:
     assert client.post("/api/chat", json={"message": ""}).status_code == 422
+
+
+def test_chat_requires_foundry_mode(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.api import main
+
+    monkeypatch.setattr(
+        main,
+        "settings",
+        SimpleNamespace(is_foundry_mode=False, default_approver="demo.user@contoso.com"),
+    )
+
+    response = client.post("/api/chat", json={"message": "Show AP metrics", "session_id": "local-fallback"})
+    assert response.status_code == 503
+    assert "Foundry mode is required" in response.json()["detail"]
+
+
+def test_chat_uses_foundry_agent_in_foundry_mode(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.agents import foundry_client
+    from src.api import main
+
+    monkeypatch.setattr(
+        main,
+        "settings",
+        SimpleNamespace(is_foundry_mode=True, default_approver="demo.user@contoso.com"),
+    )
+    monkeypatch.setattr(
+        foundry_client,
+        "invoke_foundry_agent",
+        lambda message, approver: AgentResponse(
+            reply=f"Foundry: {message}",
+            trace=[TraceStep(agent="Finance Orchestrator", tool="ap_metrics", summary="Completed")],
+        ),
+    )
+
+    payload = client.post("/api/chat", json={"message": "Show AP metrics", "session_id": "remote"}).json()
+
+    assert payload["reply"] == "Foundry: Show AP metrics"
+    assert payload["agent_trace"][0]["tool"] == "ap_metrics"
+    assert payload["session_id"] == "remote"

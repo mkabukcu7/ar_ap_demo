@@ -52,13 +52,14 @@ the security model — are in [`docs/architecture`](docs/architecture/architectu
 ## Quickstart (offline demo, ~2 minutes)
 
 ```bash
-# 1. Backend
+# Dashboard and API
 pip install -r requirements.txt
-uvicorn src.api.main:app --reload --port 8000        # http://localhost:8000/docs
-
-# 2. Dashboard
-cd ui/webapp && npm install && npm run dev           # http://localhost:5173
+uvicorn src.api.main:app --reload --port 8000
 ```
+
+Open the dashboard at [http://localhost:8000/](http://localhost:8000/) or the API documentation at
+[http://localhost:8000/docs](http://localhost:8000/docs). The bundled dashboard is a standalone
+HTML page served directly by FastAPI, so it does not require Node, npm, or Vite.
 
 Ask the Finance Copilot, or call the API directly:
 
@@ -111,7 +112,8 @@ sample-data/
   invoices/            50 invoices, 40 purchase orders, 12 vendors, document facsimiles
   remittances/         25 remittances, 40 AR invoices, 8 customers, document facsimiles
   knowledge/           AP, AR and treasury policies, SOX controls guide, operations handbook
-ui/webapp/             React + TypeScript + Fluent UI dashboard (Vite)
+ui/static-demo.html    Standalone dashboard served directly by FastAPI
+ui/webapp/             Optional React + TypeScript + Fluent UI source dashboard
 tests/                 Pytest suite for the tools, dataset, orchestrator and API
 ```
 

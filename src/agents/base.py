@@ -5,8 +5,8 @@ The accelerator runs in two modes:
 * ``local`` (default) — deterministic Python planners call the same function
   tools that are registered with Azure AI Foundry. No Azure resources or model
   quota are required, so the demo always runs.
-* ``foundry`` — the orchestrator and its child agents run on the Azure AI Agent
-  Service with the ``gpt-5.4`` deployment; the tools in :mod:`src.tools` are
+* ``foundry`` — the orchestrator and its child agents run on Microsoft Foundry
+    with the configured model deployment; the tools in :mod:`src.tools` are
   registered as function tools and executed locally by the tool-call loop.
 
 Both modes share the instructions in ``src/prompts`` so the demo narrative and
