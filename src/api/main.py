@@ -12,6 +12,7 @@ from __future__ import annotations
 
 from pathlib import Path
 from typing import Any
+import logging
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.responses import FileResponse
@@ -35,6 +36,7 @@ from src.data.store import get_store
 from src.tools import ap_tools, ar_tools, knowledge_tools
 
 STATIC_DASHBOARD = Path(__file__).resolve().parents[2] / "ui" / "static-demo.html"
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="Finance Operations Agent Accelerator API",
@@ -278,8 +280,9 @@ def chat(request: ChatRequest) -> ChatResponse:
         from src.agents.foundry_client import invoke_foundry_agent
 
         response = invoke_foundry_agent(request.message, approver=approver)
-    except Exception as error:
-        raise HTTPException(status_code=502, detail=f"Foundry agent invocation failed: {error}") from error
+    except Exception:
+        logger.exception("Foundry agent invocation failed")
+        raise HTTPException(status_code=502, detail="Foundry agent invocation failed.") from None
 
     payload = response.to_dict()
     return ChatResponse(**payload, session_id=session_id)

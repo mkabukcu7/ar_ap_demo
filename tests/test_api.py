@@ -2,13 +2,12 @@
 
 from __future__ import annotations
 
-import importlib
 from types import SimpleNamespace
 
 import pytest
 from fastapi.testclient import TestClient
 
-from src.agents.base import AgentResponse, TraceStep
+from src.agents.base import AgentResponse, Citation, TraceStep
 from src.agents.orchestrator import reset_orchestrator
 from src.api import main as main_module
 from src.data.store import reset_store
@@ -18,15 +17,18 @@ from src.data.store import reset_store
 def client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     reset_store()
     reset_orchestrator()
-    monkeypatch.setenv("FINANCE_AGENT_MODE", "foundry")
-    monkeypatch.setenv("AZURE_AI_PROJECT_ENDPOINT", "https://example.test/api/projects/demo")
-    monkeypatch.setenv("AZURE_AI_MODEL_DEPLOYMENT", "gpt-5-mini")
-
-    import src.config
-    importlib.reload(src.config)
-    import src.api.main
-    importlib.reload(src.api.main)
-    return TestClient(src.api.main.app)
+    monkeypatch.setattr(
+        main_module,
+        "settings",
+        SimpleNamespace(
+            is_foundry_mode=True,
+            data_dir="sample-data",
+            default_approver="demo.user@contoso.com",
+            model_deployment="gpt-5-mini",
+            enable_write_actions=True,
+        ),
+    )
+    return TestClient(main_module.app)
 
 
 def test_health(client: TestClient) -> None:
@@ -130,11 +132,11 @@ def test_chat_endpoint_returns_citations_and_trace(client: TestClient, monkeypat
         lambda message, approver=None: AgentResponse(
             reply="The relevant control is FIN-SOX-AP-01: invoice approvals require independent review and evidence retention.",
             citations=[
-                {
-                    "title": "AP policy control",
-                    "source": "src/prompts/ap-agent.md",
-                    "snippet": "FIN-SOX-AP-01 requires documented approval and evidence retention.",
-                }
+                Citation(
+                    title="AP policy control",
+                    source="src/prompts/ap-agent.md",
+                    snippet="FIN-SOX-AP-01 requires documented approval and evidence retention.",
+                )
             ],
             trace=[TraceStep(agent="Finance Orchestrator", tool="knowledge_search", summary="Completed")],
         ),
@@ -188,3 +190,18 @@ def test_chat_uses_foundry_agent_in_foundry_mode(client: TestClient, monkeypatch
     assert payload["reply"] == "Foundry: Show AP metrics"
     assert payload["agent_trace"][0]["tool"] == "ap_metrics"
     assert payload["session_id"] == "remote"
+
+
+def test_chat_does_not_expose_foundry_exception_details(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.agents import foundry_client
+
+    def fail_to_invoke(message: str, approver: str) -> AgentResponse:
+        raise RuntimeError("credential-token-secret")
+
+    monkeypatch.setattr(foundry_client, "invoke_foundry_agent", fail_to_invoke)
+
+    response = client.post("/api/chat", json={"message": "Show AP metrics"})
+
+    assert response.status_code == 502
+    assert response.json()["detail"] == "Foundry agent invocation failed."
+    assert "credential-token-secret" not in response.text

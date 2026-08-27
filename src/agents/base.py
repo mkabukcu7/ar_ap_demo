@@ -1,16 +1,12 @@
 """Shared agent abstractions.
 
-The accelerator runs in two modes:
+The orchestrator and its child agents run on Microsoft Foundry with the
+configured model deployment. The trusted functions in :mod:`src.tools` are
+executed locally when requested by the Foundry tool-call loop.
 
-* ``local`` (default) — deterministic Python planners call the same function
-  tools that are registered with Azure AI Foundry. No Azure resources or model
-  quota are required, so the demo always runs.
-* ``foundry`` — the orchestrator and its child agents run on Microsoft Foundry
-    with the configured model deployment; the tools in :mod:`src.tools` are
-  registered as function tools and executed locally by the tool-call loop.
-
-Both modes share the instructions in ``src/prompts`` so the demo narrative and
-the deployed agents never drift apart.
+The local instruction files in ``src/prompts`` are the source used when
+publishing the deployed agents, so the demo narrative and deployed agents do
+not drift apart.
 """
 
 from __future__ import annotations
