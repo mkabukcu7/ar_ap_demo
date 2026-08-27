@@ -67,6 +67,16 @@ tools:
       name: post_invoice_to_erp
       description: Post an approved invoice to the ERP system.
 
+  - type: function
+    function:
+      name: evaluate_invoice
+      description: Run the full AP validation chain (vendor, match, duplicate, confidence) and return an approval recommendation.
+
+  - type: function
+    function:
+      name: ap_metrics
+      description: Return accounts payable KPIs for the command centre dashboard.
+
 # -------- Metadata --------
 tags:
   role: specialist

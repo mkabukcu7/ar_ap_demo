@@ -31,6 +31,13 @@ tools:
         Semantic + keyword search over the Azure AI Search finance knowledge index.
         Returns ranked document chunks with citations for policy Q&A.
 
+  - type: function
+    function:
+      name: answer_with_citations
+      description: >
+        Compose a grounded answer to a finance policy question and return the
+        supporting citations (document title, section and source path).
+
 # -------- Azure AI Search Tool (built-in RAG tool) --------
   - type: azure_ai_search
     azure_ai_search:

@@ -230,12 +230,17 @@ sed -i "s/<<DOCUMENT_INTELLIGENCE_NAME>>/$DI_NAME/g" infra/foundry/connections.y
 The backend auto-registers agents on startup when `FINANCE_AGENT_MODE=foundry`. To register manually:
 
 ```bash
-cd src
-pip install -r requirements.txt
-python -m scripts.register_agents \
-  --endpoint "$PROJECT_ENDPOINT" \
-  --agents-dir ../infra/foundry/agents
+pip install -r requirements.txt -r requirements-azure.txt
+
+FINANCE_AGENT_MODE=foundry \
+AZURE_AI_PROJECT_ENDPOINT="$PROJECT_ENDPOINT" \
+python -m src.agents.foundry_client
 ```
+
+`src/agents/foundry_client.py` builds each agent from the same instructions in `src/prompts/` and
+the same function-tool schemas in `src/tools/registry.py` that the local mode uses, so the deployed
+agents and the demo never drift apart. The declarative equivalents are checked in at
+`infra/foundry/agents/*.agent.yaml`.
 
 ---
 
@@ -255,10 +260,11 @@ APPLICATIONINSIGHTS_CONNECTION_STRING=<from Step 6>
 # Mode: 'local' (offline sample data) or 'foundry' (full Azure)
 FINANCE_AGENT_MODE=foundry
 
-# Optional: approval thresholds (USD)
-APPROVAL_THRESHOLD_AUTO=5000
-APPROVAL_THRESHOLD_MANAGER=25000
-APPROVAL_THRESHOLD_CONTROLLER=100000
+# Optional
+FINANCE_DATA_DIR=./sample-data                     # dataset location for local mode
+FINANCE_DEFAULT_APPROVER=demo.user@contoso.com     # identity recorded on demo approvals
+FINANCE_CORS_ORIGINS=http://localhost:5173         # allowed dashboard origins
+FINANCE_ENABLE_WRITE_ACTIONS=true                  # set false for a read-only demo
 ```
 
 > **Security Note:** Never commit `.env` to source control. In production, these values are injected as Container Apps environment variables from Key Vault references.
@@ -270,8 +276,8 @@ APPROVAL_THRESHOLD_CONTROLLER=100000
 ### Step 12 — Install Python Dependencies
 
 ```bash
-cd src
-pip install -r requirements.txt
+pip install -r requirements.txt          # runtime
+pip install -r requirements-dev.txt      # runtime + pytest, for running the test suite
 ```
 
 ### Step 13 — Start the Backend API
@@ -281,7 +287,7 @@ pip install -r requirements.txt
 set -a && source ../.env && set +a
 
 # Start FastAPI server (port 8000, hot-reload)
-uvicorn api.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn src.api.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
 The API will be available at `http://localhost:8000`.  
@@ -295,7 +301,8 @@ npm install
 npm run dev
 ```
 
-The UI will be available at `http://localhost:3000`.
+The UI will be available at `http://localhost:5173` (the Vite dev server proxies `/api` to
+`http://localhost:8000`).
 
 ### Step 15 — Local (Offline) Mode
 
@@ -315,8 +322,8 @@ The backend will serve responses from the JSON fixtures in `/sample-data`. This 
 ### Check Backend Health
 
 ```bash
-curl https://<backend-url>/health
-# Expected: {"status": "healthy", "mode": "foundry", "agents": ["finance-orchestrator", ...]}
+curl https://<backend-url>/api/health
+# Expected: {"status":"ok","mode":"foundry","model_deployment":"gpt-5.4","invoice_count":50,"knowledge_documents":5}
 ```
 
 ### Check Search Index
@@ -331,9 +338,9 @@ curl "${SEARCH_ENDPOINT}/indexes/finance-knowledge/docs/\$count?api-version=2024
 ### Run a Test Agent Query
 
 ```bash
-curl -X POST http://localhost:8000/api/agents/chat \
+curl -X POST http://localhost:8000/api/chat \
   -H "Content-Type: application/json" \
-  -d '{"message": "What is the current AP exception backlog?", "session_id": "test-001"}'
+  -d '{"message": "Why is invoice INV-1047 blocked?", "session_id": "test-001"}'
 ```
 
 ---

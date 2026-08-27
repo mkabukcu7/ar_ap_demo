@@ -56,6 +56,11 @@ tools:
       name: search_invoices
       description: Search open AR invoices by customer, due date, or status.
 
+  - type: function
+    function:
+      name: payment_discrepancies
+      description: Return payment matching exceptions ranked by financial impact.
+
 # -------- Metadata --------
 tags:
   role: specialist

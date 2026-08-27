@@ -152,12 +152,15 @@ The accelerator implements mandatory human approval gates for high-risk financia
 
 | Invoice Amount | Approval Type | Approver |
 |---------------|--------------|---------|
-| ≤ $5,000 | Auto-approved (agent) | None required |
-| $5,001 – $25,000 | Single human approval | AP Manager |
-| $25,001 – $100,000 | Single human approval | Controller |
-| > $100,000 | Dual approval required | Controller + CFO |
+| ≤ $2,000 | Straight-through processing when fully matched and exception free | AP Analyst reviews exceptions only |
+| $2,001 – $10,000 | Single human approval | Cost Centre Manager |
+| $10,001 – $25,000 | Dual approval | Cost Centre Manager + Finance Director |
+| $25,001 – $100,000 | Dual approval | Finance Director + Controller |
+| > $100,000 | Dual approval | Controller + CFO |
 
-> Thresholds are configurable via the `APPROVAL_THRESHOLD_*` environment variables.
+> The matrix is defined in the Accounts Payable Policy (`sample-data/knowledge/ap-policy.md`) and
+> implemented in `src/tools/ap_tools.py` (`APPROVAL_MATRIX`, `required_approvals`). Change both
+> together so the agents, the UI and the policy documentation never disagree.
 
 ### 5.2 HITL Implementation
 
