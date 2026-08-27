@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import importlib
 from types import SimpleNamespace
 
 import pytest
@@ -9,15 +10,23 @@ from fastapi.testclient import TestClient
 
 from src.agents.base import AgentResponse, TraceStep
 from src.agents.orchestrator import reset_orchestrator
-from src.api.main import app
+from src.api import main as main_module
 from src.data.store import reset_store
 
 
 @pytest.fixture()
-def client() -> TestClient:
+def client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     reset_store()
     reset_orchestrator()
-    return TestClient(app)
+    monkeypatch.setenv("FINANCE_AGENT_MODE", "foundry")
+    monkeypatch.setenv("AZURE_AI_PROJECT_ENDPOINT", "https://example.test/api/projects/demo")
+    monkeypatch.setenv("AZURE_AI_MODEL_DEPLOYMENT", "gpt-5-mini")
+
+    import src.config
+    importlib.reload(src.config)
+    import src.api.main
+    importlib.reload(src.api.main)
+    return TestClient(src.api.main.app)
 
 
 def test_health(client: TestClient) -> None:
@@ -112,7 +121,25 @@ def test_agent_endpoints(client: TestClient) -> None:
     assert client.get("/api/agents/activity").json()["count"] >= 1
 
 
-def test_chat_endpoint_returns_citations_and_trace(client: TestClient) -> None:
+def test_chat_endpoint_returns_citations_and_trace(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.agents import foundry_client
+
+    monkeypatch.setattr(
+        foundry_client,
+        "invoke_foundry_agent",
+        lambda message, approver=None: AgentResponse(
+            reply="The relevant control is FIN-SOX-AP-01: invoice approvals require independent review and evidence retention.",
+            citations=[
+                {
+                    "title": "AP policy control",
+                    "source": "src/prompts/ap-agent.md",
+                    "snippet": "FIN-SOX-AP-01 requires documented approval and evidence retention.",
+                }
+            ],
+            trace=[TraceStep(agent="Finance Orchestrator", tool="knowledge_search", summary="Completed")],
+        ),
+    )
+
     payload = client.post("/api/chat", json={"message": "What SOX control governs invoice approvals?"}).json()
     assert "FIN-SOX-AP-01" in payload["reply"]
     assert payload["citations"]

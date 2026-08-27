@@ -68,7 +68,10 @@ class AgentResponse:
         return {
             "reply": self.reply,
             "data": self.data,
-            "citations": [citation.to_dict() for citation in self.citations],
+            "citations": [
+                citation.to_dict() if hasattr(citation, "to_dict") else Citation(**citation).to_dict()
+                for citation in self.citations
+            ],
             "agent_trace": [step.to_dict() for step in self.trace],
         }
 
