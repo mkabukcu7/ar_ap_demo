@@ -1,0 +1,20 @@
+Proseware Marketing
+INVOICE
+
+Invoice Number : PROS-9027
+Invoice ID     : INV-1027
+Invoice Date   : 2026-01-24
+Due Date       : 2026-03-10
+Purchase Order : PO-7018
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Event sponsorship                   4 x     635.41 =     2,541.64
+  Campaign production                 5 x     565.88 =     2,829.38
+  Creative retainer                   4 x     556.64 =     2,226.55
+
+Subtotal       : 7,597.57 USD
+Tax            : 626.80 USD
+Total Due      : 8,224.37 USD
+
+Remit payment per the terms agreed in the master services agreement.

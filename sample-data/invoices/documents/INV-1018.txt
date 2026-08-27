@@ -1,0 +1,19 @@
+Lamna Healthcare Staffing
+INVOICE
+
+Invoice Number : LAMN-9018
+Invoice ID     : INV-1018
+Invoice Date   : 2026-02-23
+Due Date       : 2026-03-25
+Purchase Order : NOT PROVIDED
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Temporary staffing                  4 x     267.55 =     1,070.21
+  Contract nursing hours              5 x     263.98 =     1,319.88
+
+Subtotal       : 2,390.09 USD
+Tax            : 197.18 USD
+Total Due      : 2,587.27 USD
+
+Remit payment per the terms agreed in the master services agreement.

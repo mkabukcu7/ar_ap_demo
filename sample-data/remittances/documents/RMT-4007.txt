@@ -1,0 +1,13 @@
+Fourth Coffee
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4007
+Payment Date     : 2026-02-16
+Payment Method   : Wire
+Payment Reference: ACH-600091
+Payment Amount   : 14,637.52 USD
+
+Invoices Referenced
+  ARI-3007        14,637.52
+
+Questions regarding this payment should be directed to accounts payable.

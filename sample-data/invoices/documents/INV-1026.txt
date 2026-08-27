@@ -1,0 +1,20 @@
+Wide World Importers
+INVOICE
+
+Invoice Number : WIDE-9026
+Invoice ID     : INV-1026
+Invoice Date   : 2026-01-19
+Due Date       : 2026-03-20
+Purchase Order : NOT PROVIDED
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Lab consumables                     4 x      98.77 =       395.08
+  Packaging materials                 5 x     115.42 =       577.08
+  Safety equipment                    5 x     146.20 =       731.02
+
+Subtotal       : 1,703.18 USD
+Tax            : 140.51 USD
+Total Due      : 1,843.69 USD
+
+Remit payment per the terms agreed in the master services agreement.

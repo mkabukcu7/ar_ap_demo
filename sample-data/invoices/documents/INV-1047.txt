@@ -1,0 +1,20 @@
+Contoso Cloud Services
+INVOICE
+
+Invoice Number : WOOD-9047
+Invoice ID     : INV-1047
+Invoice Date   : 2026-03-23
+Due Date       : 2026-04-22
+Purchase Order : PO-7001
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  HVAC maintenance                   10 x   1,123.80 =    11,238.04
+  Janitorial services                 1 x  17,362.26 =    17,362.26
+  Security services                  10 x   1,597.27 =    15,972.68
+
+Subtotal       : 44,572.98 USD
+Tax            : 3,677.02 USD
+Total Due      : 48,250.00 USD
+
+Remit payment per the terms agreed in the master services agreement.

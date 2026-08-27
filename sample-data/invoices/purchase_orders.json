@@ -1,0 +1,1070 @@
+[
+  {
+    "po_number": "PO-7001",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "po_date": "2025-11-20",
+    "currency": "USD",
+    "amount": 13587.25,
+    "received_amount": 11005.28,
+    "invoiced_amount": 48250.0,
+    "remaining_amount": 0.0,
+    "status": "closed",
+    "cost_center": "CC-101",
+    "line_items": [
+      {
+        "description": "Software subscription",
+        "quantity": 5,
+        "unit_price": 1500.91,
+        "amount": 7504.54
+      },
+      {
+        "description": "Managed detection & response",
+        "quantity": 2,
+        "unit_price": 3041.36,
+        "amount": 6082.71
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7002",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "po_date": "2026-02-14",
+    "currency": "USD",
+    "amount": 9229.92,
+    "received_amount": 8203.8,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 9229.92,
+    "status": "open",
+    "cost_center": "CC-102",
+    "line_items": [
+      {
+        "description": "Inbound freight",
+        "quantity": 4,
+        "unit_price": 892.55,
+        "amount": 3570.19
+      },
+      {
+        "description": "Customs brokerage",
+        "quantity": 12,
+        "unit_price": 471.64,
+        "amount": 5659.73
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7003",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "po_date": "2025-12-30",
+    "currency": "USD",
+    "amount": 8534.44,
+    "received_amount": 6454.67,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 8534.44,
+    "status": "open",
+    "cost_center": "CC-103",
+    "line_items": [
+      {
+        "description": "Statutory audit fees",
+        "quantity": 10,
+        "unit_price": 853.44,
+        "amount": 8534.44
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7004",
+    "vendor_id": "VEN-2005",
+    "vendor_name": "Adventure Works Supply",
+    "po_date": "2026-02-02",
+    "currency": "USD",
+    "amount": 4973.91,
+    "received_amount": 4077.29,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 4973.91,
+    "status": "open",
+    "cost_center": "CC-104",
+    "line_items": [
+      {
+        "description": "Office supplies",
+        "quantity": 5,
+        "unit_price": 329.54,
+        "amount": 1647.69
+      },
+      {
+        "description": "Lab consumables",
+        "quantity": 12,
+        "unit_price": 100.42,
+        "amount": 1205.1
+      },
+      {
+        "description": "Safety equipment",
+        "quantity": 5,
+        "unit_price": 424.22,
+        "amount": 2121.12
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7005",
+    "vendor_id": "VEN-2006",
+    "vendor_name": "Tailwind Traders Hardware",
+    "po_date": "2025-11-18",
+    "currency": "USD",
+    "amount": 61272.62,
+    "received_amount": 41711.34,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 61272.62,
+    "status": "open",
+    "cost_center": "CC-105",
+    "line_items": [
+      {
+        "description": "Monitors",
+        "quantity": 12,
+        "unit_price": 5106.05,
+        "amount": 61272.62
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7006",
+    "vendor_id": "VEN-2007",
+    "vendor_name": "Proseware Marketing",
+    "po_date": "2025-09-18",
+    "currency": "USD",
+    "amount": 19670.51,
+    "received_amount": 19436.62,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 19670.51,
+    "status": "open",
+    "cost_center": "CC-106",
+    "line_items": [
+      {
+        "description": "Campaign production",
+        "quantity": 1,
+        "unit_price": 10665.65,
+        "amount": 10665.65
+      },
+      {
+        "description": "Creative retainer",
+        "quantity": 5,
+        "unit_price": 1800.97,
+        "amount": 9004.86
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7007",
+    "vendor_id": "VEN-2008",
+    "vendor_name": "Wide World Importers",
+    "po_date": "2025-10-22",
+    "currency": "USD",
+    "amount": 5259.28,
+    "received_amount": 4143.82,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 5259.28,
+    "status": "open",
+    "cost_center": "CC-107",
+    "line_items": [
+      {
+        "description": "Safety equipment",
+        "quantity": 5,
+        "unit_price": 1051.86,
+        "amount": 5259.28
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7008",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "po_date": "2025-11-26",
+    "currency": "USD",
+    "amount": 55852.16,
+    "received_amount": 37083.01,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 55852.16,
+    "status": "open",
+    "cost_center": "CC-108",
+    "line_items": [
+      {
+        "description": "Statutory audit fees",
+        "quantity": 12,
+        "unit_price": 2609.06,
+        "amount": 31308.67
+      },
+      {
+        "description": "Project management",
+        "quantity": 12,
+        "unit_price": 2045.29,
+        "amount": 24543.49
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7009",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "po_date": "2025-12-11",
+    "currency": "USD",
+    "amount": 8930.97,
+    "received_amount": 7636.52,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 8930.97,
+    "status": "open",
+    "cost_center": "CC-109",
+    "line_items": [
+      {
+        "description": "Software subscription",
+        "quantity": 5,
+        "unit_price": 637.87,
+        "amount": 3189.34
+      },
+      {
+        "description": "Managed detection & response",
+        "quantity": 12,
+        "unit_price": 295.88,
+        "amount": 3550.52
+      },
+      {
+        "description": "Data platform support",
+        "quantity": 4,
+        "unit_price": 547.78,
+        "amount": 2191.11
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7010",
+    "vendor_id": "VEN-2011",
+    "vendor_name": "VanArsdel Print & Media",
+    "po_date": "2025-10-24",
+    "currency": "USD",
+    "amount": 34857.61,
+    "received_amount": 23434.84,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 34857.61,
+    "status": "open",
+    "cost_center": "CC-110",
+    "line_items": [
+      {
+        "description": "Campaign production",
+        "quantity": 4,
+        "unit_price": 3955.97,
+        "amount": 15823.88
+      },
+      {
+        "description": "Creative retainer",
+        "quantity": 4,
+        "unit_price": 4758.43,
+        "amount": 19033.73
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7011",
+    "vendor_id": "VEN-2012",
+    "vendor_name": "Lamna Healthcare Staffing",
+    "po_date": "2026-01-30",
+    "currency": "USD",
+    "amount": 22136.82,
+    "received_amount": 20356.11,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 22136.82,
+    "status": "open",
+    "cost_center": "CC-111",
+    "line_items": [
+      {
+        "description": "Contract nursing hours",
+        "quantity": 5,
+        "unit_price": 1369.66,
+        "amount": 6848.32
+      },
+      {
+        "description": "Temporary staffing",
+        "quantity": 10,
+        "unit_price": 838.62,
+        "amount": 8386.2
+      },
+      {
+        "description": "Recruiting fees",
+        "quantity": 5,
+        "unit_price": 1380.46,
+        "amount": 6902.3
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7012",
+    "vendor_id": "VEN-2001",
+    "vendor_name": "Northwind Facilities Group",
+    "po_date": "2025-11-04",
+    "currency": "USD",
+    "amount": 25265.21,
+    "received_amount": 23548.75,
+    "invoiced_amount": 1508.26,
+    "remaining_amount": 23756.95,
+    "status": "open",
+    "cost_center": "CC-100",
+    "line_items": [
+      {
+        "description": "Security services",
+        "quantity": 5,
+        "unit_price": 2088.66,
+        "amount": 10443.31
+      },
+      {
+        "description": "Landscaping",
+        "quantity": 1,
+        "unit_price": 14821.9,
+        "amount": 14821.9
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7013",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "po_date": "2025-10-28",
+    "currency": "USD",
+    "amount": 3964.54,
+    "received_amount": 3472.52,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 3964.54,
+    "status": "open",
+    "cost_center": "CC-101",
+    "line_items": [
+      {
+        "description": "Software subscription",
+        "quantity": 12,
+        "unit_price": 177.78,
+        "amount": 2133.37
+      },
+      {
+        "description": "Managed detection & response",
+        "quantity": 10,
+        "unit_price": 183.12,
+        "amount": 1831.17
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7014",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "po_date": "2026-01-08",
+    "currency": "USD",
+    "amount": 69608.48,
+    "received_amount": 58231.35,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 69608.48,
+    "status": "open",
+    "cost_center": "CC-102",
+    "line_items": [
+      {
+        "description": "Customs brokerage",
+        "quantity": 5,
+        "unit_price": 7565.9,
+        "amount": 37829.49
+      },
+      {
+        "description": "Inbound freight",
+        "quantity": 12,
+        "unit_price": 2648.25,
+        "amount": 31778.99
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7015",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "po_date": "2025-12-26",
+    "currency": "USD",
+    "amount": 17031.56,
+    "received_amount": 15976.9,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 17031.56,
+    "status": "open",
+    "cost_center": "CC-103",
+    "line_items": [
+      {
+        "description": "Project management",
+        "quantity": 1,
+        "unit_price": 5521.19,
+        "amount": 5521.19
+      },
+      {
+        "description": "Advisory hours",
+        "quantity": 12,
+        "unit_price": 405.9,
+        "amount": 4870.81
+      },
+      {
+        "description": "Statutory audit fees",
+        "quantity": 12,
+        "unit_price": 553.3,
+        "amount": 6639.56
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7016",
+    "vendor_id": "VEN-2005",
+    "vendor_name": "Adventure Works Supply",
+    "po_date": "2026-02-19",
+    "currency": "USD",
+    "amount": 2145.13,
+    "received_amount": 1628.48,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 2145.13,
+    "status": "open",
+    "cost_center": "CC-104",
+    "line_items": [
+      {
+        "description": "Safety equipment",
+        "quantity": 5,
+        "unit_price": 157.18,
+        "amount": 785.9
+      },
+      {
+        "description": "Office supplies",
+        "quantity": 1,
+        "unit_price": 652.16,
+        "amount": 652.16
+      },
+      {
+        "description": "Lab consumables",
+        "quantity": 4,
+        "unit_price": 176.77,
+        "amount": 707.07
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7017",
+    "vendor_id": "VEN-2006",
+    "vendor_name": "Tailwind Traders Hardware",
+    "po_date": "2026-01-22",
+    "currency": "USD",
+    "amount": 4073.36,
+    "received_amount": 3059.55,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 4073.36,
+    "status": "open",
+    "cost_center": "CC-105",
+    "line_items": [
+      {
+        "description": "Monitors",
+        "quantity": 2,
+        "unit_price": 850.43,
+        "amount": 1700.87
+      },
+      {
+        "description": "Network switches",
+        "quantity": 10,
+        "unit_price": 139.94,
+        "amount": 1399.39
+      },
+      {
+        "description": "Docking stations",
+        "quantity": 4,
+        "unit_price": 243.28,
+        "amount": 973.1
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7018",
+    "vendor_id": "VEN-2007",
+    "vendor_name": "Proseware Marketing",
+    "po_date": "2026-01-13",
+    "currency": "USD",
+    "amount": 61458.8,
+    "received_amount": 39515.41,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 61458.8,
+    "status": "open",
+    "cost_center": "CC-106",
+    "line_items": [
+      {
+        "description": "Campaign production",
+        "quantity": 2,
+        "unit_price": 22422.22,
+        "amount": 44844.44
+      },
+      {
+        "description": "Creative retainer",
+        "quantity": 1,
+        "unit_price": 16614.36,
+        "amount": 16614.36
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7019",
+    "vendor_id": "VEN-2008",
+    "vendor_name": "Wide World Importers",
+    "po_date": "2025-11-28",
+    "currency": "USD",
+    "amount": 23547.92,
+    "received_amount": 19273.72,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 23547.92,
+    "status": "open",
+    "cost_center": "CC-107",
+    "line_items": [
+      {
+        "description": "Office supplies",
+        "quantity": 4,
+        "unit_price": 2102.11,
+        "amount": 8408.43
+      },
+      {
+        "description": "Safety equipment",
+        "quantity": 12,
+        "unit_price": 556.68,
+        "amount": 6680.17
+      },
+      {
+        "description": "Packaging materials",
+        "quantity": 12,
+        "unit_price": 704.94,
+        "amount": 8459.32
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7020",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "po_date": "2025-09-13",
+    "currency": "USD",
+    "amount": 22889.97,
+    "received_amount": 19795.02,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 22889.97,
+    "status": "open",
+    "cost_center": "CC-108",
+    "line_items": [
+      {
+        "description": "Project management",
+        "quantity": 12,
+        "unit_price": 1907.5,
+        "amount": 22889.97
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7021",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "po_date": "2025-10-10",
+    "currency": "USD",
+    "amount": 35509.85,
+    "received_amount": 26260.08,
+    "invoiced_amount": 11159.54,
+    "remaining_amount": 24350.31,
+    "status": "open",
+    "cost_center": "CC-109",
+    "line_items": [
+      {
+        "description": "Managed detection & response",
+        "quantity": 12,
+        "unit_price": 1617.11,
+        "amount": 19405.32
+      },
+      {
+        "description": "Cloud consumption",
+        "quantity": 1,
+        "unit_price": 16104.53,
+        "amount": 16104.53
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7022",
+    "vendor_id": "VEN-2011",
+    "vendor_name": "VanArsdel Print & Media",
+    "po_date": "2026-01-30",
+    "currency": "USD",
+    "amount": 12456.2,
+    "received_amount": 10887.01,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 12456.2,
+    "status": "open",
+    "cost_center": "CC-110",
+    "line_items": [
+      {
+        "description": "Event sponsorship",
+        "quantity": 4,
+        "unit_price": 1431.8,
+        "amount": 5727.19
+      },
+      {
+        "description": "Campaign production",
+        "quantity": 4,
+        "unit_price": 986.16,
+        "amount": 3944.63
+      },
+      {
+        "description": "Creative retainer",
+        "quantity": 2,
+        "unit_price": 1392.19,
+        "amount": 2784.38
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7023",
+    "vendor_id": "VEN-2012",
+    "vendor_name": "Lamna Healthcare Staffing",
+    "po_date": "2026-02-04",
+    "currency": "USD",
+    "amount": 8489.08,
+    "received_amount": 8107.12,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 8489.08,
+    "status": "open",
+    "cost_center": "CC-111",
+    "line_items": [
+      {
+        "description": "Recruiting fees",
+        "quantity": 1,
+        "unit_price": 4456.36,
+        "amount": 4456.36
+      },
+      {
+        "description": "Contract nursing hours",
+        "quantity": 5,
+        "unit_price": 806.54,
+        "amount": 4032.72
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7024",
+    "vendor_id": "VEN-2001",
+    "vendor_name": "Northwind Facilities Group",
+    "po_date": "2025-09-20",
+    "currency": "USD",
+    "amount": 14725.99,
+    "received_amount": 12683.21,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 14725.99,
+    "status": "open",
+    "cost_center": "CC-100",
+    "line_items": [
+      {
+        "description": "Security services",
+        "quantity": 2,
+        "unit_price": 7362.99,
+        "amount": 14725.99
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7025",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "po_date": "2025-09-27",
+    "currency": "USD",
+    "amount": 8695.45,
+    "received_amount": 7094.66,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 8695.45,
+    "status": "open",
+    "cost_center": "CC-101",
+    "line_items": [
+      {
+        "description": "Software subscription",
+        "quantity": 12,
+        "unit_price": 381.75,
+        "amount": 4581.02
+      },
+      {
+        "description": "Data platform support",
+        "quantity": 1,
+        "unit_price": 4114.43,
+        "amount": 4114.43
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7026",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "po_date": "2025-10-29",
+    "currency": "USD",
+    "amount": 37716.42,
+    "received_amount": 27953.98,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 37716.42,
+    "status": "open",
+    "cost_center": "CC-102",
+    "line_items": [
+      {
+        "description": "Inbound freight",
+        "quantity": 12,
+        "unit_price": 2192.9,
+        "amount": 26314.75
+      },
+      {
+        "description": "Outbound freight",
+        "quantity": 10,
+        "unit_price": 1140.17,
+        "amount": 11401.67
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7027",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "po_date": "2026-01-19",
+    "currency": "USD",
+    "amount": 8921.11,
+    "received_amount": 8612.06,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 8921.11,
+    "status": "open",
+    "cost_center": "CC-103",
+    "line_items": [
+      {
+        "description": "Tax compliance",
+        "quantity": 10,
+        "unit_price": 348.03,
+        "amount": 3480.34
+      },
+      {
+        "description": "Project management",
+        "quantity": 2,
+        "unit_price": 2720.39,
+        "amount": 5440.77
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7028",
+    "vendor_id": "VEN-2005",
+    "vendor_name": "Adventure Works Supply",
+    "po_date": "2025-12-03",
+    "currency": "USD",
+    "amount": 56346.77,
+    "received_amount": 50133.16,
+    "invoiced_amount": 10512.86,
+    "remaining_amount": 45833.91,
+    "status": "open",
+    "cost_center": "CC-104",
+    "line_items": [
+      {
+        "description": "Lab consumables",
+        "quantity": 1,
+        "unit_price": 24221.63,
+        "amount": 24221.63
+      },
+      {
+        "description": "Safety equipment",
+        "quantity": 10,
+        "unit_price": 2111.76,
+        "amount": 21117.58
+      },
+      {
+        "description": "Packaging materials",
+        "quantity": 5,
+        "unit_price": 2201.51,
+        "amount": 11007.56
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7029",
+    "vendor_id": "VEN-2006",
+    "vendor_name": "Tailwind Traders Hardware",
+    "po_date": "2026-01-22",
+    "currency": "USD",
+    "amount": 2134.24,
+    "received_amount": 1731.32,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 2134.24,
+    "status": "open",
+    "cost_center": "CC-105",
+    "line_items": [
+      {
+        "description": "Network switches",
+        "quantity": 2,
+        "unit_price": 424.03,
+        "amount": 848.06
+      },
+      {
+        "description": "Laptops",
+        "quantity": 10,
+        "unit_price": 128.62,
+        "amount": 1286.18
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7030",
+    "vendor_id": "VEN-2007",
+    "vendor_name": "Proseware Marketing",
+    "po_date": "2025-12-23",
+    "currency": "USD",
+    "amount": 15505.8,
+    "received_amount": 12396.25,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 15505.8,
+    "status": "open",
+    "cost_center": "CC-106",
+    "line_items": [
+      {
+        "description": "Event sponsorship",
+        "quantity": 2,
+        "unit_price": 5141.22,
+        "amount": 10282.44
+      },
+      {
+        "description": "Media placement",
+        "quantity": 4,
+        "unit_price": 1305.84,
+        "amount": 5223.36
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7031",
+    "vendor_id": "VEN-2008",
+    "vendor_name": "Wide World Importers",
+    "po_date": "2025-09-20",
+    "currency": "USD",
+    "amount": 1714.48,
+    "received_amount": 1537.89,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 1714.48,
+    "status": "open",
+    "cost_center": "CC-107",
+    "line_items": [
+      {
+        "description": "Lab consumables",
+        "quantity": 12,
+        "unit_price": 55.1,
+        "amount": 661.2
+      },
+      {
+        "description": "Office supplies",
+        "quantity": 2,
+        "unit_price": 526.64,
+        "amount": 1053.28
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7032",
+    "vendor_id": "VEN-2009",
+    "vendor_name": "Woodgrove Advisory LLP",
+    "po_date": "2026-01-31",
+    "currency": "USD",
+    "amount": 15949.29,
+    "received_amount": 12945.34,
+    "invoiced_amount": 4267.67,
+    "remaining_amount": 11681.62,
+    "status": "open",
+    "cost_center": "CC-108",
+    "line_items": [
+      {
+        "description": "Statutory audit fees",
+        "quantity": 12,
+        "unit_price": 1329.11,
+        "amount": 15949.29
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7033",
+    "vendor_id": "VEN-2010",
+    "vendor_name": "Relecloud Data Centers",
+    "po_date": "2026-01-20",
+    "currency": "USD",
+    "amount": 55570.82,
+    "received_amount": 50496.23,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 55570.82,
+    "status": "open",
+    "cost_center": "CC-109",
+    "line_items": [
+      {
+        "description": "Cloud consumption",
+        "quantity": 2,
+        "unit_price": 27785.41,
+        "amount": 55570.82
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7034",
+    "vendor_id": "VEN-2011",
+    "vendor_name": "VanArsdel Print & Media",
+    "po_date": "2025-09-28",
+    "currency": "USD",
+    "amount": 4508.7,
+    "received_amount": 3754.49,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 4508.7,
+    "status": "open",
+    "cost_center": "CC-110",
+    "line_items": [
+      {
+        "description": "Creative retainer",
+        "quantity": 5,
+        "unit_price": 901.74,
+        "amount": 4508.7
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7035",
+    "vendor_id": "VEN-2012",
+    "vendor_name": "Lamna Healthcare Staffing",
+    "po_date": "2025-10-29",
+    "currency": "USD",
+    "amount": 3918.64,
+    "received_amount": 3195.72,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 3918.64,
+    "status": "open",
+    "cost_center": "CC-111",
+    "line_items": [
+      {
+        "description": "Recruiting fees",
+        "quantity": 4,
+        "unit_price": 979.66,
+        "amount": 3918.64
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7036",
+    "vendor_id": "VEN-2001",
+    "vendor_name": "Northwind Facilities Group",
+    "po_date": "2025-12-13",
+    "currency": "USD",
+    "amount": 16598.42,
+    "received_amount": 10978.49,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 16598.42,
+    "status": "open",
+    "cost_center": "CC-100",
+    "line_items": [
+      {
+        "description": "Janitorial services",
+        "quantity": 12,
+        "unit_price": 898.55,
+        "amount": 10782.55
+      },
+      {
+        "description": "Landscaping",
+        "quantity": 10,
+        "unit_price": 581.59,
+        "amount": 5815.87
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7037",
+    "vendor_id": "VEN-2002",
+    "vendor_name": "Contoso Cloud Services",
+    "po_date": "2026-01-12",
+    "currency": "USD",
+    "amount": 10704.49,
+    "received_amount": 8767.78,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 10704.49,
+    "status": "open",
+    "cost_center": "CC-101",
+    "line_items": [
+      {
+        "description": "Managed detection & response",
+        "quantity": 2,
+        "unit_price": 2475.11,
+        "amount": 4950.23
+      },
+      {
+        "description": "Software subscription",
+        "quantity": 1,
+        "unit_price": 5754.26,
+        "amount": 5754.26
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7038",
+    "vendor_id": "VEN-2003",
+    "vendor_name": "Fabrikam Logistics",
+    "po_date": "2025-11-07",
+    "currency": "USD",
+    "amount": 33521.03,
+    "received_amount": 31567.67,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 33521.03,
+    "status": "open",
+    "cost_center": "CC-102",
+    "line_items": [
+      {
+        "description": "Customs brokerage",
+        "quantity": 12,
+        "unit_price": 2793.42,
+        "amount": 33521.03
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7039",
+    "vendor_id": "VEN-2004",
+    "vendor_name": "Litware Professional Services",
+    "po_date": "2026-01-28",
+    "currency": "USD",
+    "amount": 61681.4,
+    "received_amount": 41121.52,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 61681.4,
+    "status": "open",
+    "cost_center": "CC-103",
+    "line_items": [
+      {
+        "description": "Tax compliance",
+        "quantity": 2,
+        "unit_price": 30840.7,
+        "amount": 61681.4
+      }
+    ]
+  },
+  {
+    "po_number": "PO-7040",
+    "vendor_id": "VEN-2005",
+    "vendor_name": "Adventure Works Supply",
+    "po_date": "2025-10-01",
+    "currency": "USD",
+    "amount": 43161.82,
+    "received_amount": 29269.43,
+    "invoiced_amount": 0.0,
+    "remaining_amount": 43161.82,
+    "status": "open",
+    "cost_center": "CC-104",
+    "line_items": [
+      {
+        "description": "Lab consumables",
+        "quantity": 5,
+        "unit_price": 4624.69,
+        "amount": 23123.45
+      },
+      {
+        "description": "Office supplies",
+        "quantity": 2,
+        "unit_price": 10019.18,
+        "amount": 20038.37
+      }
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+Relecloud Data Centers
+INVOICE
+
+Invoice Number : RELE-9029
+Invoice ID     : INV-1029
+Invoice Date   : 2026-01-31
+Due Date       : 2026-03-17
+Purchase Order : PO-7009
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Managed detection & response        4 x   5,608.81 =    22,435.24
+
+Subtotal       : 22,435.24 USD
+Tax            : 1,850.91 USD
+Total Due      : 24,286.15 USD
+
+Remit payment per the terms agreed in the master services agreement.

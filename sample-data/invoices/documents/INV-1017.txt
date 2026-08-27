@@ -1,0 +1,19 @@
+Northwind Facilities Group
+INVOICE
+
+Invoice Number : NORT-9017
+Invoice ID     : INV-1017
+Invoice Date   : 2026-03-26
+Due Date       : 2026-05-10
+Purchase Order : NOT PROVIDED
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Landscaping                         5 x     698.39 =     3,491.93
+  Security services                   5 x     933.18 =     4,665.90
+
+Subtotal       : 8,157.83 USD
+Tax            : 673.02 USD
+Total Due      : 8,830.85 USD
+
+Remit payment per the terms agreed in the master services agreement.

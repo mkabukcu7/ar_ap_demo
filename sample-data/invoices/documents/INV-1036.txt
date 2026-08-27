@@ -1,0 +1,20 @@
+Tailwind Traders Hardware
+INVOICE
+
+Invoice Number : TAIL-9036
+Invoice ID     : INV-1036
+Invoice Date   : 2026-02-13
+Due Date       : 2026-03-15
+Purchase Order : PO-7005
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Monitors                           10 x      81.21 =       812.12
+  Laptops                            12 x      43.51 =       522.12
+  Network switches                   10 x      50.66 =       506.63
+
+Subtotal       : 1,840.87 USD
+Tax            : 151.87 USD
+Total Due      : 1,992.74 USD
+
+Remit payment per the terms agreed in the master services agreement.

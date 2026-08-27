@@ -1,0 +1,18 @@
+Woodgrove Advisory LLP
+INVOICE
+
+Invoice Number : WOOD-9003
+Invoice ID     : INV-1003
+Invoice Date   : 2026-03-21
+Due Date       : 2026-04-20
+Purchase Order : PO-7020
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Project management                  1 x   1,797.70 =     1,797.70
+
+Subtotal       : 1,797.70 USD
+Tax            : 148.31 USD
+Total Due      : 1,946.01 USD
+
+Remit payment per the terms agreed in the master services agreement.

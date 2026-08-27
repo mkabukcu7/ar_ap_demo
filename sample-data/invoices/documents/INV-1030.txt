@@ -1,0 +1,20 @@
+Northwind Facilities Group
+INVOICE
+
+Invoice Number : NORT-9030
+Invoice ID     : INV-1030
+Invoice Date   : 2026-03-13
+Due Date       : 2026-04-27
+Purchase Order : PO-7024
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  HVAC maintenance                    1 x     316.78 =       316.78
+  Landscaping                        10 x      33.37 =       333.68
+  Security services                   5 x      61.66 =       308.32
+
+Subtotal       : 958.78 USD
+Tax            : 79.10 USD
+Total Due      : 1,037.88 USD
+
+Remit payment per the terms agreed in the master services agreement.

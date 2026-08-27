@@ -1,0 +1,43 @@
+# ============================================================
+# Azure AI Foundry — Finance Operations Project Definition
+# ============================================================
+# Usage:
+#   az ml workspace create --file infra/foundry/project.yaml \
+#     --resource-group <rg> --subscription <sub-id>
+# ============================================================
+
+$schema: https://azuremlschemas.azureedge.net/latest/workspace.schema.json
+
+name: finance-operations-project
+display_name: Finance Operations Agent Project
+description: >
+  Azure AI Foundry project for the Finance Operations Agent Accelerator.
+  Hosts AP, AR, Finance Policy, Vendor Validation, and Exception Resolution agents
+  orchestrated by the Finance Orchestrator Agent.
+
+type: project
+hub_name: finance-operations-hub        # Must match the hub deployed by Bicep
+
+tags:
+  environment: dev
+  application: finance-operations-agent-accelerator
+
+# -------- Model Deployments --------
+model_deployments:
+  - name: gpt-5.4
+    model:
+      format: OpenAI
+      name: gpt-5.4
+      version: "2025-01-01"
+    sku:
+      name: GlobalStandard
+      capacity: 10
+
+# -------- Connections --------
+# Detailed connection definitions are in connections.yaml.
+# Reference them here by name so agents can resolve endpoints at runtime.
+connections:
+  - $ref: connections.yaml#/connections/azure-ai-search
+  - $ref: connections.yaml#/connections/azure-storage
+  - $ref: connections.yaml#/connections/app-insights
+  - $ref: connections.yaml#/connections/document-intelligence

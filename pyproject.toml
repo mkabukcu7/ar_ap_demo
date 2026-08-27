@@ -1,0 +1,11 @@
+[project]
+name = "finance-operations-agent-accelerator"
+version = "1.0.0"
+description = "Finance Operations Command Center accelerator for Azure AI Foundry: AP, AR and finance knowledge agents."
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+addopts = "-q"
+filterwarnings = ["ignore::DeprecationWarning"]

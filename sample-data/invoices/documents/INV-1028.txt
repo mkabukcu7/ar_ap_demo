@@ -1,0 +1,18 @@
+VanArsdel Print & Media
+INVOICE
+
+Invoice Number : VANA-9028
+Invoice ID     : INV-1028
+Invoice Date   : 2026-01-25
+Due Date       : 2026-03-26
+Purchase Order : PO-7034
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Campaign production                10 x      68.04 =       680.36
+
+Subtotal       : 680.36 USD
+Tax            : 56.13 USD
+Total Due      : 736.49 USD
+
+Remit payment per the terms agreed in the master services agreement.

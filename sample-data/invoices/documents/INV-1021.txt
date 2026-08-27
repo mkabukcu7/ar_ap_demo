@@ -1,0 +1,19 @@
+Litware Professional Services
+INVOICE
+
+Invoice Number : LITW-9021
+Invoice ID     : INV-1021
+Invoice Date   : 2026-03-27
+Due Date       : 2026-05-11
+Purchase Order : PO-7015
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Tax compliance                      4 x     549.63 =     2,198.54
+  Statutory audit fees                2 x     838.74 =     1,677.47
+
+Subtotal       : 3,876.01 USD
+Tax            : 319.77 USD
+Total Due      : 4,195.78 USD
+
+Remit payment per the terms agreed in the master services agreement.

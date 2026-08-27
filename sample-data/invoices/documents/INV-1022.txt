@@ -1,0 +1,18 @@
+VanArsdel Print & Media
+INVOICE
+
+Invoice Number : VANA-9022
+Invoice ID     : INV-1022
+Invoice Date   : 2026-01-24
+Due Date       : 2026-03-25
+Purchase Order : PO-7034
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Creative retainer                   4 x     438.89 =     1,755.58
+
+Subtotal       : 1,755.58 USD
+Tax            : 144.84 USD
+Total Due      : 1,900.42 USD
+
+Remit payment per the terms agreed in the master services agreement.

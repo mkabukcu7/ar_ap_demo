@@ -1,0 +1,13 @@
+Alpine Ski House
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4016
+Payment Date     : 2026-03-18
+Payment Method   : ACH
+Payment Reference: ACH-600208
+Payment Amount   : 8,091.23 USD
+
+Invoices Referenced
+  ARI-3016         8,091.23
+
+Questions regarding this payment should be directed to accounts payable.

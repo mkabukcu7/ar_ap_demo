@@ -1,0 +1,20 @@
+VanArsdel Print & Media
+INVOICE
+
+Invoice Number : VANA-9013
+Invoice ID     : INV-1013
+Invoice Date   : 2026-03-07
+Due Date       : 2026-05-06
+Purchase Order : PO-7010
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Event sponsorship                   4 x     475.19 =     1,900.75
+  Media placement                     1 x   2,854.81 =     2,854.81
+  Creative retainer                   5 x     903.32 =     4,516.61
+
+Subtotal       : 9,272.17 USD
+Tax            : 764.95 USD
+Total Due      : 10,037.12 USD
+
+Remit payment per the terms agreed in the master services agreement.

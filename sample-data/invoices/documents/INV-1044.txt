@@ -1,0 +1,18 @@
+Northwind Facilities Group
+INVOICE
+
+Invoice Number : NORT-9044
+Invoice ID     : INV-1044
+Invoice Date   : 2026-02-19
+Due Date       : 2026-04-05
+Purchase Order : PO-7012
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Janitorial services                 2 x     696.65 =     1,393.31
+
+Subtotal       : 1,393.31 USD
+Tax            : 114.95 USD
+Total Due      : 1,508.26 USD
+
+Remit payment per the terms agreed in the master services agreement.

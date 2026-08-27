@@ -1,0 +1,14 @@
+Nod Publishers
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4005
+Payment Date     : 2026-03-24
+Payment Method   : Wire
+Payment Reference: ACH-600065
+Payment Amount   : 19,697.40 USD
+
+Invoices Referenced
+  ARI-3005         5,042.81
+  ARI-3013        10,854.59
+
+Questions regarding this payment should be directed to accounts payable.

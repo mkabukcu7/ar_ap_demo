@@ -1,0 +1,13 @@
+Fourth Coffee
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4023
+Payment Date     : 2026-02-26
+Payment Method   : Check
+Payment Reference: ACH-600299
+Payment Amount   : 26,202.85 USD
+
+Invoices Referenced
+  ARI-3015        26,202.85
+
+Questions regarding this payment should be directed to accounts payable.

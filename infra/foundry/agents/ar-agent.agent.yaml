@@ -1,0 +1,67 @@
+# ============================================================
+# Agent: Accounts Receivable (AR) Agent
+# Role: Remittance matching, cash application, collections,
+#       and AR portfolio health analysis.
+# ============================================================
+
+name: ar-agent
+display_name: Accounts Receivable Agent
+description: >
+  Specialist agent for Accounts Receivable operations. Matches remittance
+  advice to open invoices, applies cash, identifies unapplied cash items,
+  prioritizes collections outreach, and generates AR health summaries for
+  finance leadership.
+
+model: gpt-5.4
+model_parameters:
+  temperature: 0.0
+  top_p: 1.0
+  max_tokens: 4096
+
+instructions_file: src/prompts/ar-agent.md
+
+# -------- Function Tools --------
+tools:
+  - type: function
+    function:
+      name: search_remittances
+      description: Search remittance advices by customer, date, or reference number.
+
+  - type: function
+    function:
+      name: match_remittance
+      description: Match a remittance advice to open AR invoices for cash application.
+
+  - type: function
+    function:
+      name: list_unapplied_cash
+      description: List cash receipts that have not yet been applied to invoices.
+
+  - type: function
+    function:
+      name: ar_health_summary
+      description: >
+        Generate an AR health summary including aging buckets, DSO,
+        overdue percentage, and top delinquent customers.
+
+  - type: function
+    function:
+      name: prioritize_collections
+      description: >
+        Score and prioritize open AR items for collections outreach based on
+        amount, days overdue, customer risk, and payment history.
+
+  - type: function
+    function:
+      name: search_invoices
+      description: Search open AR invoices by customer, due date, or status.
+
+  - type: function
+    function:
+      name: payment_discrepancies
+      description: Return payment matching exceptions ranked by financial impact.
+
+# -------- Metadata --------
+tags:
+  role: specialist
+  domain: accounts-receivable

@@ -1,0 +1,18 @@
+Contoso Cloud Services
+INVOICE
+
+Invoice Number : CONT-9008
+Invoice ID     : INV-1008
+Invoice Date   : 2026-02-20
+Due Date       : 2026-04-21
+Purchase Order : PO-7001
+Bill To        : Contoso Corporation, Accounts Payable, Redmond WA
+
+Line Items
+  Data platform support               5 x     163.48 =       817.40
+
+Subtotal       : 817.40 USD
+Tax            : 67.44 USD
+Total Due      : 884.84 USD
+
+Remit payment per the terms agreed in the master services agreement.

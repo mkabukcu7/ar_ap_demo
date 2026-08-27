@@ -1,0 +1,14 @@
+First Up Consultants
+REMITTANCE ADVICE
+
+Remittance ID    : RMT-4003
+Payment Date     : 2026-03-30
+Payment Method   : ACH
+Payment Reference: ACH-600039
+Payment Amount   : 78,159.41 USD
+
+Invoices Referenced
+  ARI-3003        65,095.79
+  ARI-3011        11,663.62
+
+Questions regarding this payment should be directed to accounts payable.
