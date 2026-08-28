@@ -10,9 +10,12 @@ Interactive documentation (OpenAPI) is available at ``/docs``.
 
 from __future__ import annotations
 
+from pathlib import Path
 from typing import Any
+import logging
 
 from fastapi import FastAPI, HTTPException, Query
+from fastapi.responses import FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 
 from src.agents.orchestrator import DEMO_PROMPTS, get_orchestrator
@@ -31,6 +34,9 @@ from src.api.schemas import (
 from src.config import settings
 from src.data.store import get_store
 from src.tools import ap_tools, ar_tools, knowledge_tools
+
+STATIC_DASHBOARD = Path(__file__).resolve().parents[2] / "ui" / "static-demo.html"
+logger = logging.getLogger(__name__)
 
 app = FastAPI(
     title="Finance Operations Agent Accelerator API",
@@ -54,12 +60,22 @@ def _store():
     return get_store(settings.data_dir)
 
 
+@app.get("/", include_in_schema=False)
+def dashboard() -> FileResponse:
+    """Serve the standalone dashboard without requiring a JavaScript toolchain."""
+
+    return FileResponse(STATIC_DASHBOARD)
+
+
 @app.get("/api/health", response_model=HealthResponse, tags=["system"])
 def health() -> HealthResponse:
+    if not settings.is_foundry_mode:
+        raise HTTPException(status_code=503, detail="Foundry mode is required; local mode has been removed.")
+
     store = _store()
     return HealthResponse(
         status="ok",
-        mode="foundry" if settings.is_foundry_mode else "local",
+        mode="foundry",
         model_deployment=settings.model_deployment,
         invoice_count=len(store.invoices),
         knowledge_documents=len({doc["document_id"] for doc in store.knowledge}),
@@ -255,13 +271,19 @@ def demo_prompts() -> dict[str, Any]:
 
 @app.post("/api/chat", response_model=ChatResponse, tags=["agents"])
 def chat(request: ChatRequest) -> ChatResponse:
-    orchestrator = get_orchestrator()
+    if not settings.is_foundry_mode:
+        raise HTTPException(status_code=503, detail="Foundry mode is required; local mode has been removed.")
+
     session_id = request.session_id or "default"
-    response = orchestrator.handle(
-        request.message,
-        session_id=session_id,
-        approver=request.approver or settings.default_approver,
-    )
+    approver = request.approver or settings.default_approver
+    try:
+        from src.agents.foundry_client import invoke_foundry_agent
+
+        response = invoke_foundry_agent(request.message, approver=approver)
+    except Exception:
+        logger.exception("Foundry agent invocation failed")
+        raise HTTPException(status_code=502, detail="Foundry agent invocation failed.") from None
+
     payload = response.to_dict()
     return ChatResponse(**payload, session_id=session_id)
 

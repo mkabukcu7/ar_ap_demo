@@ -7,9 +7,9 @@ architecture, document understanding, grounded retrieval and human-in-the-loop a
 Built for CFOs, finance transformation leaders, controllers, shared services leaders and finance
 operations teams — and for the Microsoft and partner teams who demonstrate to them.
 
-> **Runs anywhere.** The default `local` mode uses the committed synthetic dataset and needs no
-> Azure subscription, model quota or network access. Deploy to Azure AI Foundry with the included
-> Bicep templates when you want the full architecture.
+> **Foundry required.** Runtime reasoning and agent orchestration use Azure AI Foundry. The
+> committed dataset supports trusted tool execution, while the included Bicep templates provision
+> the required Azure architecture.
 
 ---
 
@@ -49,16 +49,22 @@ flowchart LR
 Detailed diagrams — solution architecture, agent orchestration, AP and AR sequences, data flows and
 the security model — are in [`docs/architecture`](docs/architecture/architecture.md).
 
-## Quickstart (offline demo, ~2 minutes)
+## Quickstart (Foundry runtime, ~2 minutes)
 
 ```bash
-# 1. Backend
+# Dashboard and API
 pip install -r requirements.txt
-uvicorn src.api.main:app --reload --port 8000        # http://localhost:8000/docs
-
-# 2. Dashboard
-cd ui/webapp && npm install && npm run dev           # http://localhost:5173
+pip install -r requirements-azure.txt
+uvicorn src.api.main:app --reload --port 8000
 ```
+
+Set `FINANCE_AGENT_MODE=foundry` and `AZURE_AI_PROJECT_ENDPOINT` in `.env` before starting the
+API. The service fails fast when Foundry is not configured; it does not use a local reasoning
+fallback.
+
+Open the dashboard at [http://localhost:8000/](http://localhost:8000/) or the API documentation at
+[http://localhost:8000/docs](http://localhost:8000/docs). The bundled dashboard is a standalone
+HTML page served directly by FastAPI, so it does not require Node, npm, or Vite.
 
 Ask the Finance Copilot, or call the API directly:
 
@@ -111,7 +117,8 @@ sample-data/
   invoices/            50 invoices, 40 purchase orders, 12 vendors, document facsimiles
   remittances/         25 remittances, 40 AR invoices, 8 customers, document facsimiles
   knowledge/           AP, AR and treasury policies, SOX controls guide, operations handbook
-ui/webapp/             React + TypeScript + Fluent UI dashboard (Vite)
+ui/static-demo.html    Standalone dashboard served directly by FastAPI
+ui/webapp/             Optional React + TypeScript + Fluent UI source dashboard
 tests/                 Pytest suite for the tools, dataset, orchestrator and API
 ```
 

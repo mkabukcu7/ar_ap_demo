@@ -2,26 +2,47 @@
 
 from __future__ import annotations
 
+from types import SimpleNamespace
+
 import pytest
 from fastapi.testclient import TestClient
 
+from src.agents.base import AgentResponse, Citation, TraceStep
 from src.agents.orchestrator import reset_orchestrator
-from src.api.main import app
+from src.api import main as main_module
 from src.data.store import reset_store
 
 
 @pytest.fixture()
-def client() -> TestClient:
+def client(monkeypatch: pytest.MonkeyPatch) -> TestClient:
     reset_store()
     reset_orchestrator()
-    return TestClient(app)
+    monkeypatch.setattr(
+        main_module,
+        "settings",
+        SimpleNamespace(
+            is_foundry_mode=True,
+            data_dir="sample-data",
+            default_approver="demo.user@contoso.com",
+            model_deployment="gpt-5-mini",
+            enable_write_actions=True,
+        ),
+    )
+    return TestClient(main_module.app)
 
 
 def test_health(client: TestClient) -> None:
     payload = client.get("/api/health").json()
     assert payload["status"] == "ok"
-    assert payload["mode"] in {"local", "foundry"}
+    assert payload["mode"] == "foundry"
     assert payload["invoice_count"] == 50
+
+
+def test_dashboard_is_served_without_vite(client: TestClient) -> None:
+    response = client.get("/")
+    assert response.status_code == 200
+    assert "Finance Operations Command Center" in response.text
+    assert "/api/metrics/ap" in response.text
 
 
 def test_metrics_endpoints(client: TestClient) -> None:
@@ -102,7 +123,25 @@ def test_agent_endpoints(client: TestClient) -> None:
     assert client.get("/api/agents/activity").json()["count"] >= 1
 
 
-def test_chat_endpoint_returns_citations_and_trace(client: TestClient) -> None:
+def test_chat_endpoint_returns_citations_and_trace(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.agents import foundry_client
+
+    monkeypatch.setattr(
+        foundry_client,
+        "invoke_foundry_agent",
+        lambda message, approver=None: AgentResponse(
+            reply="The relevant control is FIN-SOX-AP-01: invoice approvals require independent review and evidence retention.",
+            citations=[
+                Citation(
+                    title="AP policy control",
+                    source="src/prompts/ap-agent.md",
+                    snippet="FIN-SOX-AP-01 requires documented approval and evidence retention.",
+                )
+            ],
+            trace=[TraceStep(agent="Finance Orchestrator", tool="knowledge_search", summary="Completed")],
+        ),
+    )
+
     payload = client.post("/api/chat", json={"message": "What SOX control governs invoice approvals?"}).json()
     assert "FIN-SOX-AP-01" in payload["reply"]
     assert payload["citations"]
@@ -112,3 +151,57 @@ def test_chat_endpoint_returns_citations_and_trace(client: TestClient) -> None:
 
 def test_chat_rejects_empty_messages(client: TestClient) -> None:
     assert client.post("/api/chat", json={"message": ""}).status_code == 422
+
+
+def test_chat_requires_foundry_mode(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.api import main
+
+    monkeypatch.setattr(
+        main,
+        "settings",
+        SimpleNamespace(is_foundry_mode=False, default_approver="demo.user@contoso.com"),
+    )
+
+    response = client.post("/api/chat", json={"message": "Show AP metrics", "session_id": "local-fallback"})
+    assert response.status_code == 503
+    assert "Foundry mode is required" in response.json()["detail"]
+
+
+def test_chat_uses_foundry_agent_in_foundry_mode(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.agents import foundry_client
+    from src.api import main
+
+    monkeypatch.setattr(
+        main,
+        "settings",
+        SimpleNamespace(is_foundry_mode=True, default_approver="demo.user@contoso.com"),
+    )
+    monkeypatch.setattr(
+        foundry_client,
+        "invoke_foundry_agent",
+        lambda message, approver: AgentResponse(
+            reply=f"Foundry: {message}",
+            trace=[TraceStep(agent="Finance Orchestrator", tool="ap_metrics", summary="Completed")],
+        ),
+    )
+
+    payload = client.post("/api/chat", json={"message": "Show AP metrics", "session_id": "remote"}).json()
+
+    assert payload["reply"] == "Foundry: Show AP metrics"
+    assert payload["agent_trace"][0]["tool"] == "ap_metrics"
+    assert payload["session_id"] == "remote"
+
+
+def test_chat_does_not_expose_foundry_exception_details(client: TestClient, monkeypatch: pytest.MonkeyPatch) -> None:
+    from src.agents import foundry_client
+
+    def fail_to_invoke(message: str, approver: str) -> AgentResponse:
+        raise RuntimeError("credential-token-secret")
+
+    monkeypatch.setattr(foundry_client, "invoke_foundry_agent", fail_to_invoke)
+
+    response = client.post("/api/chat", json={"message": "Show AP metrics"})
+
+    assert response.status_code == 502
+    assert response.json()["detail"] == "Foundry agent invocation failed."
+    assert "credential-token-secret" not in response.text
