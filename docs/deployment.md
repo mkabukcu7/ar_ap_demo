@@ -2,12 +2,9 @@
 
 ## Overview
 
-This guide walks through deploying the Finance Operations Agent Accelerator to Azure, provisioning the AI agents, indexing the knowledge base, and running the application locally. The accelerator supports two modes:
-
-| Mode | Description |
-|------|-------------|
-| `local` | Fully offline — runs against JSON sample data in `/sample-data`. No Azure required. |
-| `foundry` | Full Azure deployment — Azure AI Foundry, Search, Storage, Container Apps. |
+This guide walks through deploying the Finance Operations Agent Accelerator to Azure, provisioning
+the AI agents, indexing the knowledge base, and running the application. Runtime reasoning and
+orchestration require Azure AI Foundry; the committed sample data is used by trusted function tools.
 
 ---
 
@@ -21,9 +18,12 @@ This guide walks through deploying the Finance Operations Agent Accelerator to A
 | Azure CLI `ml` extension | latest | `az extension add -n ml` |
 | Bicep CLI | 0.28 | Bundled with Azure CLI; or `az bicep install` |
 | Python | 3.11+ | [python.org](https://python.org) |
-| Node.js | 20 LTS | [nodejs.org](https://nodejs.org) |
-| Docker Desktop | 4.x (optional) | Required only for building container images |
 | Git | 2.x | [git-scm.com](https://git-scm.com) |
+
+> The demo path in this guide runs the FastAPI backend directly with Python against the deployed
+> Azure resources — Docker and Node.js are **not required**. Container Apps hosting is documented
+> separately in [Appendix A](#appendix-a--future-container-apps-hosting-optional) for when you are
+> ready to move beyond a local demo.
 
 ### Azure Requirements
 
@@ -227,7 +227,8 @@ sed -i "s/<<DOCUMENT_INTELLIGENCE_NAME>>/$DI_NAME/g" infra/foundry/connections.y
 
 ### Step 11 — Register Agents
 
-The backend auto-registers agents on startup when `FINANCE_AGENT_MODE=foundry`. To register manually:
+Agent registration is an explicit deployment step; the backend does not register agents on startup.
+To register manually:
 
 ```bash
 pip install -r requirements.txt -r requirements-azure.txt
@@ -237,9 +238,9 @@ AZURE_AI_PROJECT_ENDPOINT="$PROJECT_ENDPOINT" \
 python -m src.agents.foundry_client
 ```
 
-`src/agents/foundry_client.py` builds each agent from the same instructions in `src/prompts/` and
-the same function-tool schemas in `src/tools/registry.py` that the local mode uses, so the deployed
-agents and the demo never drift apart. The declarative equivalents are checked in at
+`src/agents/foundry_client.py` builds the orchestrator from the same instructions in `src/prompts/`
+and the same function-tool schemas in `src/tools/registry.py`, so the deployed agent and the demo
+do not drift apart. The declarative equivalents are checked in at
 `infra/foundry/agents/*.agent.yaml`.
 
 ---
@@ -249,7 +250,7 @@ agents and the demo never drift apart. The declarative equivalents are checked i
 Create a `.env` file in the repository root (never commit this file — it is `.gitignore`d):
 
 ```bash
-# Required for 'foundry' mode
+# Required for the Foundry runtime
 AZURE_AI_PROJECT_ENDPOINT=<from Step 6>
 AZURE_AI_MODEL_DEPLOYMENT=gpt-5.4
 AZURE_SEARCH_ENDPOINT=<from Step 6>
@@ -257,12 +258,12 @@ AZURE_SEARCH_INDEX=finance-knowledge
 AZURE_STORAGE_ACCOUNT=<from Step 6>
 APPLICATIONINSIGHTS_CONNECTION_STRING=<from Step 6>
 
-# Mode: 'local' (offline sample data) or 'foundry' (full Azure)
+# Runtime mode: Foundry is required
 FINANCE_AGENT_MODE=foundry
 
 # Optional
-FINANCE_DATA_DIR=./sample-data                     # dataset location for local mode
-FINANCE_DEFAULT_APPROVER=demo.user@contoso.com     # identity recorded on demo approvals
+FINANCE_DATA_DIR=./sample-data                     # trusted tool data location
+FINANCE_DEFAULT_APPROVER=approver@example.com      # temporary demo identity only
 FINANCE_CORS_ORIGINS=http://localhost:5173         # allowed dashboard origins
 FINANCE_ENABLE_WRITE_ACTIONS=true                  # set false for a read-only demo
 ```
@@ -271,13 +272,17 @@ FINANCE_ENABLE_WRITE_ACTIONS=true                  # set false for a read-only d
 
 ---
 
-## Part 6 — Running Locally
+## Part 6 — Running the Demo Locally (recommended, no Docker required)
+
+This is the primary supported path for demos: the FastAPI backend and the bundled static dashboard
+run directly with Python on your machine and connect to the Azure resources deployed in Part 1–4.
+No Container Apps hosting, Docker, or Node.js toolchain is required.
 
 ### Step 12 — Install Python Dependencies
 
 ```bash
-pip install -r requirements.txt          # runtime
-pip install -r requirements-dev.txt      # runtime + pytest, for running the test suite
+pip install -r requirements.txt -r requirements-azure.txt   # runtime + Foundry extras
+pip install -r requirements-dev.txt                          # + pytest, for running the test suite
 ```
 
 ### Step 13 — Start the Backend API
@@ -290,41 +295,22 @@ set -a && source ../.env && set +a
 uvicorn src.api.main:app --reload --host 0.0.0.0 --port 8000
 ```
 
-The API will be available at `http://localhost:8000`.  
-Interactive API docs: `http://localhost:8000/docs`
-
-### Step 14 — Start the Frontend
-
-```bash
-cd ui/webapp
-npm install
-npm run dev
-```
-
-The UI will be available at `http://localhost:5173` (the Vite dev server proxies `/api` to
-`http://localhost:8000`).
-
-### Step 15 — Local (Offline) Mode
-
-To run entirely offline without Azure:
-
-```bash
-# In .env
-FINANCE_AGENT_MODE=local
-```
-
-The backend will serve responses from the JSON fixtures in `/sample-data`. This is ideal for demos on aircraft or networks without Azure access.
-
----
+Open the dashboard at `http://localhost:8000` — it is served directly by FastAPI, so no separate
+frontend process is needed. Interactive API docs: `http://localhost:8000/docs`.
 
 ## Part 7 — Verifying the Deployment
 
 ### Check Backend Health
 
 ```bash
+# Local demo run (Part 6)
+curl http://localhost:8000/api/health
+
+# Or, if you have deployed Container Apps hosting (Appendix A)
 curl https://<backend-url>/api/health
-# Expected: {"status":"ok","mode":"foundry","model_deployment":"gpt-5.4","invoice_count":50,"knowledge_documents":5}
 ```
+
+Expected: `{"status":"ok","mode":"foundry","model_deployment":"gpt-5.4","invoice_count":50,"knowledge_documents":5}`
 
 ### Check Search Index
 
@@ -369,6 +355,36 @@ az containerapp delete \
   --resource-group "$RESOURCE_GROUP" \
   --name "ca-ui-<suffix>" --yes
 ```
+
+---
+
+## Appendix A — Future: Container Apps Hosting (optional)
+
+> **Not required for the demo.** The recommended path is Part 6 (local Python run). Use this
+> appendix only when you are ready to host the backend/frontend as always-on Container Apps
+> instead of running them locally.
+
+Container Apps needs real images instead of the `main.bicep` placeholder
+(`mcr.microsoft.com/azuredocs/containerapps-helloworld:latest`). Build them in Azure Container
+Registry — this avoids installing Docker Desktop locally:
+
+```bash
+ACR_NAME="<container-registry-name>"
+
+az acr build \
+  --registry "$ACR_NAME" \
+  --image finance-api:latest \
+  --file Dockerfile.backend .
+
+az acr build \
+  --registry "$ACR_NAME" \
+  --image finance-ui:latest \
+  --file ui/webapp/Dockerfile ui/webapp
+```
+
+Then redeploy `main.bicep`, passing the built image URIs as `backendImage` / `frontendImage`
+parameters. A `Dockerfile.backend` for the FastAPI service does not exist yet in this repository —
+add one before using this path.
 
 ---
 
