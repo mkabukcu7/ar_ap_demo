@@ -154,12 +154,22 @@ def invoke_foundry_agent(
                 if call.name in KNOWLEDGE_TOOLS and isinstance(parsed, dict):
                     # answer_with_citations already formats "citations"; search_finance_knowledge
                     # returns raw "results" with the same title/source/snippet fields.
-                    entries = parsed.get("citations") or parsed.get("results") or []
-                    citations.extend(
-                        Citation(title=entry.get("title", ""), source=entry.get("source", ""), snippet=entry.get("snippet", ""))
-                        for entry in entries
-                        if isinstance(entry, dict)
-                    )
+entries: Any
+if "citations" in parsed:
+    entries = parsed.get("citations")
+else:
+    entries = parsed.get("results")
+
+if isinstance(entries, list):
+    citations.extend(
+        Citation(
+            title=entry.get("title", ""),
+            source=entry.get("source", ""),
+            snippet=entry.get("snippet", ""),
+        )
+        for entry in entries
+        if isinstance(entry, dict)
+    )
                 summary = "Completed trusted local function call."
             except (KeyError, TypeError, ValueError, PermissionError) as error:
                 result = json.dumps({"error": str(error)})
