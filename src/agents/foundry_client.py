@@ -158,6 +158,7 @@ def invoke_foundry_agent(
                     citations.extend(
                         Citation(title=entry.get("title", ""), source=entry.get("source", ""), snippet=entry.get("snippet", ""))
                         for entry in entries
+                        if isinstance(entry, dict)
                     )
                 summary = "Completed trusted local function call."
             except (KeyError, TypeError, ValueError, PermissionError) as error:

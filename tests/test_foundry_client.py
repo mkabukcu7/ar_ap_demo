@@ -143,3 +143,49 @@ def test_foundry_agent_returns_citations_from_answer_with_citations_shape(monkey
 
     assert len(result.citations) == 1
     assert result.citations[0].source == "sample-data/knowledge/sox-controls-guide.md"
+
+
+def test_foundry_agent_skips_non_dict_citation_entries(monkeypatch) -> None:
+    from src.agents import foundry_client
+
+    class FakeMalformedCitationResponses:
+        def __init__(self) -> None:
+            self.requests: list[dict[str, object]] = []
+
+        def create(self, **kwargs: object) -> SimpleNamespace:
+            self.requests.append(kwargs)
+            if len(self.requests) == 1:
+                call = SimpleNamespace(
+                    type="function_call",
+                    name="search_finance_knowledge",
+                    arguments=json.dumps({"query": "SOX control invoice approvals"}),
+                    call_id="call-1",
+                )
+                return SimpleNamespace(id="response-1", output=[call], output_text="")
+            return SimpleNamespace(id="response-2", output=[], output_text="FIN-SOX-AP-01 governs invoice approvals.")
+
+    def fake_execute_tool_call(name: str, arguments: str, *, approver: str | None = None) -> str:
+        assert name == "search_finance_knowledge"
+        return json.dumps(
+            {
+                "query": "SOX control invoice approvals",
+                "results": [
+                    "not-a-dict-entry",
+                    {
+                        "title": "SOX Controls Guide",
+                        "source": "sample-data/knowledge/sox-controls-guide.md",
+                        "snippet": "FIN-SOX-AP-01 requires documented approval.",
+                    },
+                ],
+                "count": 2,
+            }
+        )
+
+    monkeypatch.setattr(foundry_client, "execute_tool_call", fake_execute_tool_call)
+    client = SimpleNamespace(responses=FakeMalformedCitationResponses())
+
+    result = invoke_foundry_agent("What SOX control governs invoice approvals?", client=client)
+
+    assert result.reply == "FIN-SOX-AP-01 governs invoice approvals."
+    assert len(result.citations) == 1
+    assert result.citations[0].title == "SOX Controls Guide"
