@@ -11,7 +11,7 @@ import json
 from functools import lru_cache
 from typing import Any, Protocol
 
-from src.agents.base import AgentResponse, TraceStep, load_instructions
+from src.agents.base import AgentResponse, Citation, TraceStep, load_instructions
 from src.config import settings
 from src.tools.registry import TOOL_SCHEMAS, invoke_tool
 
@@ -120,6 +120,9 @@ def sync_foundry_agent() -> str:  # pragma: no cover - requires Azure resources
         project.close()
 
 
+KNOWLEDGE_TOOLS = {"search_finance_knowledge", "answer_with_citations"}
+
+
 def invoke_foundry_agent(
     message: str,
     *,
@@ -132,6 +135,7 @@ def invoke_foundry_agent(
     response = openai_client.responses.create(input=message)
     trace: list[TraceStep] = []
     tool_data: list[Any] = []
+    citations: list[Citation] = []
 
     for _ in range(MAX_TOOL_ROUNDS):
         calls = [item for item in response.output if item.type == "function_call"]
@@ -139,13 +143,22 @@ def invoke_foundry_agent(
             if not response.output_text:
                 raise RuntimeError("The Foundry agent completed without a text response.")
             data: Any = tool_data[-1] if len(tool_data) == 1 else tool_data or None
-            return AgentResponse(reply=response.output_text, data=data, trace=trace)
+            return AgentResponse(reply=response.output_text, data=data, citations=citations, trace=trace)
 
         outputs: list[dict[str, str]] = []
         for call in calls:
             try:
                 result = execute_tool_call(call.name, call.arguments, approver=approver)
-                tool_data.append(json.loads(result))
+                parsed = json.loads(result)
+                tool_data.append(parsed)
+                if call.name in KNOWLEDGE_TOOLS and isinstance(parsed, dict):
+                    # answer_with_citations already formats "citations"; search_finance_knowledge
+                    # returns raw "results" with the same title/source/snippet fields.
+                    entries = parsed.get("citations") or parsed.get("results") or []
+                    citations.extend(
+                        Citation(title=entry.get("title", ""), source=entry.get("source", ""), snippet=entry.get("snippet", ""))
+                        for entry in entries
+                    )
                 summary = "Completed trusted local function call."
             except (KeyError, TypeError, ValueError, PermissionError) as error:
                 result = json.dumps({"error": str(error)})
@@ -158,4 +171,12 @@ def invoke_foundry_agent(
             previous_response_id=response.id,
         )
 
+
     raise RuntimeError(f"The Foundry agent exceeded {MAX_TOOL_ROUNDS} tool-call rounds.")
+
+
+if __name__ == "__main__":  # pragma: no cover - manual deployment step
+    # `python -m src.agents.foundry_client` registers/updates the orchestrator in Foundry.
+    print(f"Publishing '{ORCHESTRATOR_NAME}' to {settings.project_endpoint} ...")
+    version_id = sync_foundry_agent()
+    print(f"Published version: {version_id}")

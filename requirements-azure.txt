@@ -1,5 +1,5 @@
 -r requirements.txt
-# Azure AI Foundry deployment extras (not required for the offline demo)
+# Azure AI Foundry runtime and deployment extras
 azure-identity>=1.17
 azure-ai-projects>=2.0.0b1
 azure-search-documents>=11.5.0

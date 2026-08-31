@@ -37,7 +37,7 @@ flowchart LR
 
     AP & AR & VEN & EXC --> TOOLS["Function tools<br/>src/tools"]
     POL --> SEARCH["Azure AI Search<br/>finance-knowledge index"]
-    TOOLS --> DATA["Azure Storage · Microsoft Fabric / OneLake<br/>(sample-data in local mode)"]
+    TOOLS --> DATA["Azure Storage · Microsoft Fabric / OneLake<br/>(committed sample data for trusted tools)"]
     DI["Azure AI Content Understanding /<br/>Document Intelligence"] --> TOOLS
 
     ORCH -.-> HITL{{"Human approval gate<br/>FIN-SOX-AI-01"}}
@@ -101,7 +101,7 @@ docs/
   architecture/        Solution architecture, data flows, security & governance (Mermaid)
   demo-guide/          End-to-end demo script and talk track
   api-specification.md REST API contract
-  deployment.md        Azure deployment and local run instructions
+  deployment.md        Azure deployment and Foundry runtime instructions
 src/
   agents/              Orchestrator + AP, AR, policy, vendor and exception agents; Foundry adapter
   tools/               19 function tools shared by the API and the Foundry agents
